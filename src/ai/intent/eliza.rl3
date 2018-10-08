@@ -34,3 +34,108 @@ search text
     \<{i_am}\s{g0_at_end}
 if
     true
+
+annotation
+    intent="eliza_are_you" [weight="0.01", g0=g0]
+search text
+    \<{are_you}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_base_question" [weight="0.01", g0=g0]
+search text
+    \<{base_question}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_because" [weight="0.01", g0=g0]
+search text
+    \<{because}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_sorry" [weight="0.01"]
+search text
+    \<{sorry}\>
+if
+    true
+
+annotation
+    intent="eliza_hello" [weight="0.01"]
+search text
+    \<{hello}\>
+if
+    true
+
+annotation
+    intent="eliza_i_think" [weight="0.01", g0=g0]
+search text
+    \<{i_think}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_friend" [weight="0.01"]
+search text
+    \s{friend}\s
+if
+    true
+
+annotation
+    intent="eliza_yes" [weight="0.01"]
+search text
+    \<{yes}\>
+if
+    true
+
+annotation
+    intent="eliza_computer" [weight="0.01"]
+search text
+    \<{computer}\>
+if
+    true
+
+annotation
+    intent="eliza_is_it" [weight="0.01", g0=g0]
+search text
+    \<{is_it}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_it_is" [weight="0.01", g0=g0]
+search text
+    \<{it_is}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_can_you" [weight="0.01", g0=g0]
+search text
+    \<{can_you}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_can_i" [weight="0.01", g0=g0]
+search text
+    \<{can_i}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_you_are" [weight="0.01", g0=g0]
+search text
+    \<{you_are}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_i_dont" [weight="0.01", g0=g0]
+search text
+    \<{i_dont}\s{g0_at_end}
+if
+    true

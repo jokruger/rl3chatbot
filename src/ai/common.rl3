@@ -1,13 +1,37 @@
 include <common.rl3>
 
-pattern eos
+pattern eos [inline]
     ([!\.\?]|$)
 
-pattern g0_at_end
+pattern g0_at_end [inline]
     {g0=[^!\.\?]+}{eos}
 
 pattern cannot [icase] [inline]
     (can\s?not|can{APOSTROPHE}?t)
+
+pattern dont [icase] [inline]
+    (do\s?not|don{APOSTROPHE}?t)
+
+pattern base_question [icase] [inline]
+    (what|how|why|when)
+
+pattern because [icase] [inline]
+    (because)
+
+pattern sorry [icase] [inline]
+    (sorry)
+
+pattern hello [icase] [inline]
+    (hello|hi|hola)
+
+pattern friend [icase] [inline]
+    (friend)
+
+pattern yes [icase] [inline]
+    (yes)
+
+pattern computer [icase] [inline]
+    (computers?)
 
 pattern i_need [icase] [inline]
     (I need)
@@ -15,11 +39,35 @@ pattern i_need [icase] [inline]
 pattern i_cant [icase] [inline]
     (I {cannot})
 
+pattern i_dont [icase] [inline]
+    (I {dont})
+
 pattern i_am [icase] [inline]
-    (I am|I'?m)
+    (I am|I{APOSTROPHE}?m)
+
+pattern i_think [icase] [inline]
+    (I think|I am sure)
+
+pattern are_you [icase] [inline]
+    (Are you)
+
+pattern you_are [icase] [inline]
+    (You are|You{APOSTROPHE}?re)
+
+pattern is_it [icase] [inline]
+    (Is it)
+
+pattern it_is [icase] [inline]
+    (It is)
 
 pattern why_dont_you [icase] [inline]
-    (Why don'?t you)
+    (Why {dont} you)
 
 pattern why_cant_i [icase] [inline]
     (Why {cannot} I)
+
+pattern can_you [icase] [inline]
+    (Can you)
+
+pattern can_i [icase] [inline]
+    (Can I)
