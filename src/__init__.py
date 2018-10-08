@@ -41,7 +41,7 @@ class Chatbot():
         name, weight, subfacts = self.get_intent(conclusions)
         action = self.actions[name] if name in self.actions else self.actions['']
 
-        action(weight, subfacts, io)
+        action(weight, subfacts, conclusions, self.facts, io)
 
 app = Chatbot()
 

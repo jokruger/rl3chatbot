@@ -3,14 +3,14 @@
 from src import app
 
 @app.action('')
-def default(w, fs, io):
+def default(w, subfacts, conclusions, background, io):
     io.write('How can I help you?')
 
 @app.action('hello')
-def hello(w, fs, io):
+def hello(w, subfacts, conclusions, background, io):
     io.write('Hi! Nice to meet you.')
 
 @app.action('goodbye')
-def goodbye(w, fs, io):
+def goodbye(w, subfacts, conclusions, background, io):
     io.write('Bye-bye!')
     io.stop()
