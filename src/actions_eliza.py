@@ -220,3 +220,12 @@ def eliza_i_dont(w, subfacts, conclusions, background, io):
         "Why don't you {g0}?",
         "Do you want to {g0}?"
     ], subfacts, background))
+
+@app.action('eliza_i_feel')
+def eliza_i_feel(w, subfacts, conclusions, background, io):
+    io.write(make_answer([
+        "Good, tell me more about these feelings.",
+        "Do you often feel {g0}?",
+        "When do you usually feel {g0}?",
+        "When you feel {g0}, what do you do?"
+    ], subfacts, background))

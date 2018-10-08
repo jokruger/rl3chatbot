@@ -139,3 +139,10 @@ search text
     \<{i_dont}\s{g0_at_end}
 if
     true
+
+annotation
+    intent="eliza_i_feel" [weight="0.01", g0=g0]
+search text
+    \<{i_feel}\s{g0_at_end}
+if
+    true

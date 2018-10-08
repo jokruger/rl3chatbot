@@ -48,6 +48,9 @@ pattern i_am [icase] [inline]
 pattern i_think [icase] [inline]
     (I think|I am sure)
 
+pattern i_feel [icase] [inline]
+    (I feel)
+
 pattern are_you [icase] [inline]
     (Are you)
 
