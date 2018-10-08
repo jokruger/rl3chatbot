@@ -1,8 +1,25 @@
+include <common.rl3>
+
 pattern eos
-    [!\.\?]
+    ([!\.\?]|$)
 
-pattern hello [icase]
-    (hello|hi|hey)
+pattern g0_at_end
+    {g0=[^!\.\?]+}{eos}
 
-pattern goodbye [icase]
-    (bye|see you|goodbye?)
+pattern cannot [icase] [inline]
+    (can\s?not|can{APOSTROPHE}?t)
+
+pattern i_need [icase] [inline]
+    (I need)
+
+pattern i_cant [icase] [inline]
+    (I {cannot})
+
+pattern i_am [icase] [inline]
+    (I am|I'?m)
+
+pattern why_dont_you [icase] [inline]
+    (Why don'?t you)
+
+pattern why_cant_i [icase] [inline]
+    (Why {cannot} I)

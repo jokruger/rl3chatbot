@@ -1,0 +1,36 @@
+include "../common.rl3"
+
+annotation
+    intent="eliza_i_need" [weight="0.01", g0=g0]
+search text
+    \<{i_need}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_why_dont_you" [weight="0.01", g0=g0]
+search text
+    \<{why_dont_you}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_why_cant_i" [weight="0.01", g0=g0]
+search text
+    \<{why_cant_i}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_i_cant" [weight="0.01", g0=g0]
+search text
+    \<{i_cant}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_i_am" [weight="0.01", g0=g0]
+search text
+    \<{i_am}\s{g0_at_end}
+if
+    true
