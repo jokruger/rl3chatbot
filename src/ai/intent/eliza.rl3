@@ -43,9 +43,9 @@ if
     true
 
 annotation
-    intent="eliza_base_question" [weight="0.01", g0=g0]
+    intent="eliza_base_question" [weight="0.01"]
 search text
-    \<{base_question}\s{g0_at_end}
+    (\<{base_question}\s|\?)
 if
     true
 
@@ -99,6 +99,27 @@ if
     true
 
 annotation
+    intent="eliza_mother" [weight="0.01"]
+search text
+    \<{mother}\>
+if
+    true
+
+annotation
+    intent="eliza_father" [weight="0.01"]
+search text
+    \<{father}\>
+if
+    true
+
+annotation
+    intent="eliza_child" [weight="0.01"]
+search text
+    \<child
+if
+    true
+
+annotation
     intent="eliza_is_it" [weight="0.01", g0=g0]
 search text
     \<{is_it}\s{g0_at_end}
@@ -144,5 +165,61 @@ annotation
     intent="eliza_i_feel" [weight="0.01", g0=g0]
 search text
     \<{i_feel}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_i_have" [weight="0.01", g0=g0]
+search text
+    \<{i_have}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_i_would" [weight="0.01", g0=g0]
+search text
+    \<{i_would}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_is_there" [weight="0.01", g0=g0]
+search text
+    \<{is_there}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_my" [weight="0.01", g0=g0]
+search text
+    \<{my}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_you" [weight="0.01", g0=g0]
+search text
+    \<{you}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_why" [weight="0.01", g0=g0]
+search text
+    \<{why}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_i_want" [weight="0.01", g0=g0]
+search text
+    \<{i_want}\s{g0_at_end}
+if
+    true
+
+annotation
+    intent="eliza_base" [weight="0.01", g0=g0]
+search text
+    ^{g0_at_end}
 if
     true

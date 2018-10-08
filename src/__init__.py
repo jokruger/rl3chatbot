@@ -52,4 +52,4 @@ class Chatbot():
 
 app = Chatbot()
 
-from src import actions_common, actions_eliza
+from src import actions_general, actions_eliza

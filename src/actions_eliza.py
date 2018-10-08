@@ -105,11 +105,15 @@ def eliza_are_you(w, subfacts, conclusions, background, io):
 def eliza_base_question(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Why do you ask?",
+        "Why do you ask that?",
         "How would an answer to that help you?",
         "What do you think?"
         "How do you suppose?",
         "Perhaps you can answer your own question.",
+        "Perhaps the answer lies within yourself?",
         "What is it you're really asking?"
+        "Please consider whether you can answer your own question.",
+        "Why don't you tell me?"
     ], subfacts, background))
 
 @app.action('eliza_because')
@@ -228,4 +232,106 @@ def eliza_i_feel(w, subfacts, conclusions, background, io):
         "Do you often feel {g0}?",
         "When do you usually feel {g0}?",
         "When you feel {g0}, what do you do?"
+    ], subfacts, background))
+
+@app.action('eliza_i_have')
+def eliza_i_have(w, subfacts, conclusions, background, io):
+    io.write(make_answer([
+        "Why do you tell me that you've {g0}?",
+        "Have you really {g0}?",
+        "Now that you have {g0}, what will you do next?"
+    ], subfacts, background))
+
+@app.action('eliza_i_would')
+def eliza_i_would(w, subfacts, conclusions, background, io):
+    io.write(make_answer([
+        "Could you explain why you would {g0}?",
+        "Why would you {g0}?",
+        "Who else knows that you would {g0}?"
+    ], subfacts, background))
+
+@app.action('eliza_is_there')
+def eliza_is_there(w, subfacts, conclusions, background, io):
+    io.write(make_answer([
+        "Do you think there is {g0}?",
+        "It's likely that there is {g0}.",
+        "Would you like there to be {g0}?"
+    ], subfacts, background))
+
+@app.action('eliza_my')
+def eliza_my(w, subfacts, conclusions, background, io):
+    io.write(make_answer([
+        "I see, your {g0}.",
+        "Why do you say that your {g0}?",
+        "When your {g0}, how do you feel?"
+    ], subfacts, background))
+
+@app.action('eliza_you')
+def eliza_you(w, subfacts, conclusions, background, io):
+    io.write(make_answer([
+        "We should be discussing you, not me.",
+        "Why do you say that about me?",
+        "Why do you care whether I {g0}?"
+    ], subfacts, background))
+
+@app.action('eliza_why')
+def eliza_why(w, subfacts, conclusions, background, io):
+    io.write(make_answer([
+        "Why don't you tell me the reason why {g0}?",
+        "Why do you think {g0}?"
+    ], subfacts, background))
+
+@app.action('eliza_i_want')
+def eliza_i_want(w, subfacts, conclusions, background, io):
+    io.write(make_answer([
+        "What would it mean to you if you got {g0}?",
+        "Why do you want {g0}?",
+        "What would you do if you got {g0}?",
+        "If you got {g0}, then what would you do?"
+    ], subfacts, background))
+
+@app.action('eliza_mother')
+def eliza_mother(w, subfacts, conclusions, background, io):
+    io.write(make_answer([
+        "Tell me more about your mother.",
+        "What was your relationship with your mother like?",
+        "How do you feel about your mother?",
+        "How does this relate to your feelings today?",
+        "Good family relations are important."
+    ], subfacts, background))
+
+@app.action('eliza_father')
+def eliza_father(w, subfacts, conclusions, background, io):
+    io.write(make_answer([
+        "Tell me more about your father.",
+        "How did your father make you feel?",
+        "How do you feel about your father?",
+        "Does your relationship with your father relate to your feelings today?",
+        "Do you have trouble showing affection with your family?"
+    ], subfacts, background))
+
+@app.action('eliza_child')
+def eliza_child(w, subfacts, conclusions, background, io):
+    io.write(make_answer([
+        "Did you have close friends as a child?",
+        "What is your favorite childhood memory?",
+        "Do you remember any dreams or nightmares from childhood?",
+        "Did the other children sometimes tease you?",
+        "How do you think your childhood experiences relate to your feelings today?"
+    ], subfacts, background))
+
+@app.action('eliza_base')
+def eliza_base(w, subfacts, conclusions, background, io):
+    io.write(make_answer([
+        "Please tell me more.",
+        "Let's change focus a bit... Tell me about your family.",
+        "Can you elaborate on that?",
+        "Why do you say that {g0}?",
+        "I see.",
+        "Very interesting.",
+        "{g0}...",
+        "{g0}?",
+        "I see. And what does that tell you?",
+        "How does that make you feel?",
+        "How do you feel when you say that?"
     ], subfacts, background))

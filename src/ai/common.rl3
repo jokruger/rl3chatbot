@@ -6,14 +6,32 @@ pattern eos [inline]
 pattern g0_at_end [inline]
     {g0=[^!\.\?]+}{eos}
 
+pattern goodbye [icase] [inline]
+    (goodbye|adieu|bye-?bye|adios|cheerio|ciao)
+
+pattern mother [icase] [inline]
+    (mother|mom|mommy|mama)
+
+pattern father [icase] [inline]
+    (father|dad|daddy|papa)
+
+pattern my [icase] [inline]
+    (my)
+
+pattern you [icase] [inline]
+    (You)
+
 pattern cannot [icase] [inline]
     (can\s?not|can{APOSTROPHE}?t)
 
 pattern dont [icase] [inline]
     (do\s?not|don{APOSTROPHE}?t)
 
+pattern why [icase] [inline]
+    (Why)
+
 pattern base_question [icase] [inline]
-    (what|how|why|when)
+    (what|how|when|{why})
 
 pattern because [icase] [inline]
     (because)
@@ -51,11 +69,23 @@ pattern i_think [icase] [inline]
 pattern i_feel [icase] [inline]
     (I feel)
 
+pattern i_have [icase] [inline]
+    (I have)
+
+pattern i_would [icase] [inline]
+    (I would)
+
+pattern i_want [icase] [inline]
+    (I want)
+
 pattern are_you [icase] [inline]
     (Are you)
 
 pattern you_are [icase] [inline]
     (You are|You{APOSTROPHE}?re)
+
+pattern is_there [icase] [inline]
+    (Is there)
 
 pattern is_it [icase] [inline]
     (Is it)

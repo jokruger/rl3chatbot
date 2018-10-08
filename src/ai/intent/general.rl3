@@ -1,0 +1,8 @@
+include "../common.rl3"
+
+annotation
+    intent="goodbye" [weight="1"]
+search text
+    ^({goodbye}|stop|quit)$
+if
+    true
