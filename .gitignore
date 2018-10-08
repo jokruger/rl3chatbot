@@ -1,3 +1,6 @@
+# RL3 compiled models
+*.rl3c
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
