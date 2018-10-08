@@ -9,5 +9,5 @@ def default(w, subfacts, conclusions, background, io):
 
 @app.action('goodbye')
 def default(w, subfacts, conclusions, background, io):
-    io.write(random.choice(["Thank you for talking with me.", "Good-bye.", "Thank you, that will be $150.  Have a good day!"]))
+    io.write(random.choice(["Thank you for talking with me.", "Good-bye.", "Thank you, that will be $150. Have a good day!"]))
     io.stop()
