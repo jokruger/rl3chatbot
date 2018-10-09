@@ -50,6 +50,7 @@ class Chatbot():
 
         action(weight, subfacts, conclusions, self.facts, io)
 
+chatbot_name = 'RL3ChatBot'
 chatbot = Chatbot()
 
 from bot import actions_general, actions_eliza

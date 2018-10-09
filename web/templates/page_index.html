@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ name }} Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}?v=1">
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.cookie.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><span class="glyphicon glyphicon-comment"></span> Chat</div>
+                    <div class="panel-body" id="chat-panel">
+                    <ul class="chat" id="chat"></ul></div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Enter your message here..." onkeydown="if (event.keyCode == 13) document.getElementById('btn-chat').click()" autofocus />
+                            <span class="input-group-btn"><button class="btn btn-warning btn-sm" id="btn-chat" onclick="send_message()">Send</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center" style="font-size: 12px;">Powered by <a href="https://rl3.zorallabs.com/wiki/Main_Page">RL3 Information Extraction, NER & NLP Engine</a></div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            </div>
+        </div>
+    </div>
+
+    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+        function tell_bot(message) {
+            $("#chat").append('<li class="media"><div class="media-left"><img class="media-object img-circle" src="/static/img/bot.png" style="width: 45px;" alt="bot"></div><div class="media-body"><h4 class="media-heading" style="font-size: 12px;">{{ name }}</h4><span class="text-success">' + message + '</span></div></li>');
+            $("#chat-panel").scrollTop($("#chat-panel")[0].scrollHeight);
+        }
+
+        function tell_user(message) {
+            $("#chat").append('<li class="media"><div class="media-body text-right"><h4 class="media-heading" style="font-size: 12px;">You</h4><span class="text-muted">' + message + '</span></div><div class="media-right"><img class="media-object img-circle" src="/static/img/user.png" style="width: 45px;" alt="user"></div></li>');
+            $("#chat-panel").scrollTop($("#chat-panel")[0].scrollHeight);
+        }
+
+        var context = {};
+
+        function send_message() {
+            message = $('#btn-input').val();
+            $('#btn-input').val("");
+            tell_user(message);
+            $("#chat").append('<div id="typing"><div class="media-left"><img class="media-object img-circle" src="/static/img/bot.png" style="width: 45px;" alt="bot"></div><div class="media-body" style="padding-left: 7px;"><span class="typing-indicator"><span></span><span></span><span></span></span></div></div>');
+            $("#chat-panel").scrollTop($("#chat-panel")[0].scrollHeight);
+            $.post("/chat", {message: message, context: context}, function(result) {
+                context = result.context;
+                $('#typing').remove();
+                tell_bot(result.message);
+            });
+        }
+
+        $(function() {
+            tell_bot('Hello!');
+            $('.trythis').css('text-decoration', 'underline').click(function() {
+                $('#btn-input').val($(this).text());
+                $('#btn-chat').click();
+            });
+        });
+    </script>
+</body>
+</html>
