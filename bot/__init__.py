@@ -2,6 +2,11 @@
 
 import os, sys, random, rl3
 
+class Answer():
+    def __init__(self, message=None, stop=False):
+        self.message = message
+        self.stop = stop
+
 class Chatbot():
     def __init__(self):
         self.actions = dict()
@@ -9,46 +14,44 @@ class Chatbot():
         self.intent_engine = rl3.RL3Engine()
         self.intent_engine.load('./intent.rl3c')
 
-        self.facts = self.intent_engine.create_factsheet()
-
     def action(self, intent_name):
         def decorator(f):
             self.actions[intent_name] = f
             return f
         return decorator
 
-    def get_intent(self, fs):
+    def get_intents(self, fs):
+        groups = dict()
+        for i in fs.get_facts('intent'):
+            k = int(i.get_weight() * 1000)
+            if k not in groups:
+                groups[k] = []
+            groups[k].append((i.get_value(), i.get_weight(), i.get_factsheet() if i.has_factsheet() else None))
         intents = []
-        if fs.has_fact('intent'):
-            weight = 0.0
-            for i in fs.get_facts('intent'):
-                if i.get_weight() > weight:
-                    weight = i.get_weight()
-            for i in fs.get_facts('intent'):
-                if abs(weight - i.get_weight()) < 0.0001 :
-                    n = i.get_value()
-                    w = i.get_weight()
-                    s = None
-                    if i.has_factsheet():
-                        s = i.get_factsheet()
-                    t = (n, w, s)
-                    intents.append(t)
+        for i in sorted(groups.keys(), reverse=True):
+            t = groups[i]
+            random.shuffle(t)
+            intents += t
+        return intents
 
-        if len(intents) > 0:
-            return random.choice(intents)
+    def process(self, user_input, context):
+        try:
+            facts = self.intent_engine.create_factsheet_from_json(context) if context else self.intent_engine.create_factsheet()
+            conclusions = self.intent_engine.create_factsheet()
+            facts.retract_facts('text')
+            facts.assert_simple_fact('text', user_input)
+            self.intent_engine.run(facts, conclusions)
+            for name, weight, subfacts in self.get_intents(conclusions):
+                if name in self.actions:
+                    answer = self.actions[name](weight, subfacts, conclusions, facts)
+                    if answer:
+                        facts.retract_facts('prior_intent')
+                        facts.assert_simple_fact('prior_intent', name)
+                        return (answer, facts.to_json())
+        except:
+            raise
 
-        return ('', 0.0, None)
-
-    def process(self, user_input, io):
-        conclusions = self.intent_engine.create_factsheet()
-        self.facts.retract_facts('text')
-        self.facts.assert_simple_fact('text', user_input)
-        self.intent_engine.run(self.facts, conclusions)
-
-        name, weight, subfacts = self.get_intent(conclusions)
-        action = self.actions[name] if name in self.actions else self.actions['']
-
-        action(weight, subfacts, conclusions, self.facts, io)
+        return (Answer(message='ouch...'), context)
 
 chatbot_name = 'RL3ChatBot'
 chatbot = Chatbot()

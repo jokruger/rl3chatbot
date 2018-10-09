@@ -2,24 +2,12 @@
 
 from bot import chatbot
 
-class MyIO():
-    def __init__(self):
-        pass
-
-    def read(self):
-        return input('You: ')
-
-    def write(self, s):
-        print('Bot: ' + s)
-        print()
-
-    def stop(self):
-        exit(0)
-
-print()
-
-io = MyIO()
+print('Bot: Hello!\n')
 user_input = ''
+context = ''
 while True:
-    chatbot.process(user_input, io)
-    user_input = io.read()
+    user_input = input('You: ')
+    answer, context = chatbot.process(user_input, context)
+    print('Bot: %s\n' % answer.message)
+    if answer.stop:
+        exit(0)
