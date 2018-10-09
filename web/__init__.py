@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import json, uuid, logging
+import json, uuid, logging, fcntl
 from logging import Formatter, FileHandler
 from datetime import timedelta
 from flask import Flask, request, session, render_template, jsonify
@@ -17,6 +17,12 @@ file_handler = FileHandler('chatbot.log')
 file_handler.setLevel(logging.WARN)
 file_handler.setFormatter(Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
 app.logger.addHandler(file_handler)
+
+def log_message(ip, uid, msg):
+    with open('messages.log', 'a') as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        f.write('%s %s : %s\n' % (ip, uid, msg))
+        fcntl.flock(f, fcntl.LOCK_UN)
 
 def init_uid():
     uid = session.get('uid', None)
@@ -47,8 +53,7 @@ def view_chat():
     message = request.form.get('message', '')
     context = request.form.get('context', '')
 
-    #app.logger.info('MESSAGE (%s): %s' % (str(uid), message))
-    #app.logger.info('CONTEXT (%s): %s' % (str(uid), context))
+    log_message(str(request.remote_addr), str(uid), message)
 
     try:
         answer, context = chatbot.process(message, context)

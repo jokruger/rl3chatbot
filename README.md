@@ -10,3 +10,10 @@ RL3 is like a regex on steroids. It provides both entity extraction and categori
 extract additional information from it (i.e. named entity recognition and parsing).
 
 For more details on RL3 refer to https://rl3.zorallabs.com/wiki/Main_Page
+
+## Dependencies
+
+* RL3
+* python 3
+* flask
+* flask-compress
