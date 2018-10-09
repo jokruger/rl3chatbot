@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import random
-from src import app
+from bot import chatbot
 
 reflections = {
     "i": "you",
@@ -45,7 +45,7 @@ def make_answer(templates, subfacts, background):
     t = substitute(t, background, False)
     return t
 
-@app.action('eliza_i_need')
+@chatbot.action('eliza_i_need')
 def eliza_i_need(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Why do you need {g0}?",
@@ -53,7 +53,7 @@ def eliza_i_need(w, subfacts, conclusions, background, io):
         "Are you sure you need {g0}?"
     ], subfacts, background))
 
-@app.action('eliza_why_dont_you')
+@chatbot.action('eliza_why_dont_you')
 def eliza_why_dont_you(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Do you really think I don't {g0}?",
@@ -61,7 +61,7 @@ def eliza_why_dont_you(w, subfacts, conclusions, background, io):
         "Do you really want me to {g0}?"
     ], subfacts, background))
 
-@app.action('eliza_why_cant_i')
+@chatbot.action('eliza_why_cant_i')
 def eliza_why_cant_i(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Do you think you should be able to {g0}?",
@@ -70,7 +70,7 @@ def eliza_why_cant_i(w, subfacts, conclusions, background, io):
         "Have you really tried?"
     ], subfacts, background))
 
-@app.action('eliza_i_cant')
+@chatbot.action('eliza_i_cant')
 def eliza_i_cant(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "How do you know you can't {g0}?",
@@ -79,7 +79,7 @@ def eliza_i_cant(w, subfacts, conclusions, background, io):
     ], subfacts, background))
 
 
-@app.action('eliza_i_am')
+@chatbot.action('eliza_i_am')
 def eliza_i_am(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Did you come to me because you are {g0}?",
@@ -91,7 +91,7 @@ def eliza_i_am(w, subfacts, conclusions, background, io):
         "Why do you think you're {g0}?"
     ], subfacts, background))
 
-@app.action('eliza_are_you')
+@chatbot.action('eliza_are_you')
 def eliza_are_you(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Why does it matter whether I am {g0}?",
@@ -101,7 +101,7 @@ def eliza_are_you(w, subfacts, conclusions, background, io):
     ], subfacts, background))
 
 
-@app.action('eliza_base_question')
+@chatbot.action('eliza_base_question')
 def eliza_base_question(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Why do you ask?",
@@ -116,7 +116,7 @@ def eliza_base_question(w, subfacts, conclusions, background, io):
         "Why don't you tell me?"
     ], subfacts, background))
 
-@app.action('eliza_because')
+@chatbot.action('eliza_because')
 def eliza_because(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Is that the real reason?",
@@ -125,7 +125,7 @@ def eliza_because(w, subfacts, conclusions, background, io):
         "If {g0}, what else must be true?"
     ], subfacts, background))
 
-@app.action('eliza_sorry')
+@chatbot.action('eliza_sorry')
 def eliza_sorry(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "There are many times when no apology is needed.",
@@ -133,7 +133,7 @@ def eliza_sorry(w, subfacts, conclusions, background, io):
     ], subfacts, background))
 
 
-@app.action('eliza_hello')
+@chatbot.action('eliza_hello')
 def eliza_hello(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Hello... I'm glad you could drop by today.",
@@ -141,7 +141,7 @@ def eliza_hello(w, subfacts, conclusions, background, io):
         "Hello, how are you feeling today?"
     ], subfacts, background))
 
-@app.action('eliza_i_think')
+@chatbot.action('eliza_i_think')
 def eliza_i_think(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Do you doubt {g0}?",
@@ -149,7 +149,7 @@ def eliza_i_think(w, subfacts, conclusions, background, io):
         "But you're not sure {g0}?"
     ], subfacts, background))
 
-@app.action('eliza_friend')
+@chatbot.action('eliza_friend')
 def eliza_friend(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Tell me more about your friends.",
@@ -157,14 +157,14 @@ def eliza_friend(w, subfacts, conclusions, background, io):
         "Why don't you tell me about a childhood friend?"
     ], subfacts, background))
 
-@app.action('eliza_yes')
+@chatbot.action('eliza_yes')
 def eliza_yes(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "You seem quite sure.",
         "OK, but can you elaborate a bit?"
     ], subfacts, background))
 
-@app.action('eliza_computer')
+@chatbot.action('eliza_computer')
 def eliza_computer(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Are you really talking about me?",
@@ -173,7 +173,7 @@ def eliza_computer(w, subfacts, conclusions, background, io):
         "Do you feel threatened by computers?"
     ], subfacts, background))
 
-@app.action('eliza_is_it')
+@chatbot.action('eliza_is_it')
 def eliza_is_it(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Do you think it is {g0}?",
@@ -182,14 +182,14 @@ def eliza_is_it(w, subfacts, conclusions, background, io):
         "It could well be that {g0}."
     ], subfacts, background))
 
-@app.action('eliza_it_is')
+@chatbot.action('eliza_it_is')
 def eliza_it_is(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "You seem very certain.",
         "If I told you that it probably isn't {g0}, what would you feel?"
     ], subfacts, background))
 
-@app.action('eliza_can_you')
+@chatbot.action('eliza_can_you')
 def eliza_can_you(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "What makes you think I can't {g0}?",
@@ -197,7 +197,7 @@ def eliza_can_you(w, subfacts, conclusions, background, io):
         "Why do you ask if I can {g0}?"
     ], subfacts, background))
 
-@app.action('eliza_can_i')
+@chatbot.action('eliza_can_i')
 def eliza_can_i(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Perhaps you don't want to {g0}.",
@@ -205,7 +205,7 @@ def eliza_can_i(w, subfacts, conclusions, background, io):
         "If you could {g0}, would you?"
     ], subfacts, background))
 
-@app.action('eliza_you_are')
+@chatbot.action('eliza_you_are')
 def eliza_you_are(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Why do you think I am {g0}?",
@@ -217,7 +217,7 @@ def eliza_you_are(w, subfacts, conclusions, background, io):
         "Are we talking about you, or me?"
     ], subfacts, background))
 
-@app.action('eliza_i_dont')
+@chatbot.action('eliza_i_dont')
 def eliza_i_dont(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Don't you really {g0}?",
@@ -225,7 +225,7 @@ def eliza_i_dont(w, subfacts, conclusions, background, io):
         "Do you want to {g0}?"
     ], subfacts, background))
 
-@app.action('eliza_i_feel')
+@chatbot.action('eliza_i_feel')
 def eliza_i_feel(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Good, tell me more about these feelings.",
@@ -234,7 +234,7 @@ def eliza_i_feel(w, subfacts, conclusions, background, io):
         "When you feel {g0}, what do you do?"
     ], subfacts, background))
 
-@app.action('eliza_i_have')
+@chatbot.action('eliza_i_have')
 def eliza_i_have(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Why do you tell me that you've {g0}?",
@@ -242,7 +242,7 @@ def eliza_i_have(w, subfacts, conclusions, background, io):
         "Now that you have {g0}, what will you do next?"
     ], subfacts, background))
 
-@app.action('eliza_i_would')
+@chatbot.action('eliza_i_would')
 def eliza_i_would(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Could you explain why you would {g0}?",
@@ -250,7 +250,7 @@ def eliza_i_would(w, subfacts, conclusions, background, io):
         "Who else knows that you would {g0}?"
     ], subfacts, background))
 
-@app.action('eliza_is_there')
+@chatbot.action('eliza_is_there')
 def eliza_is_there(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Do you think there is {g0}?",
@@ -258,7 +258,7 @@ def eliza_is_there(w, subfacts, conclusions, background, io):
         "Would you like there to be {g0}?"
     ], subfacts, background))
 
-@app.action('eliza_my')
+@chatbot.action('eliza_my')
 def eliza_my(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "I see, your {g0}.",
@@ -266,7 +266,7 @@ def eliza_my(w, subfacts, conclusions, background, io):
         "When your {g0}, how do you feel?"
     ], subfacts, background))
 
-@app.action('eliza_you')
+@chatbot.action('eliza_you')
 def eliza_you(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "We should be discussing you, not me.",
@@ -274,14 +274,14 @@ def eliza_you(w, subfacts, conclusions, background, io):
         "Why do you care whether I {g0}?"
     ], subfacts, background))
 
-@app.action('eliza_why')
+@chatbot.action('eliza_why')
 def eliza_why(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Why don't you tell me the reason why {g0}?",
         "Why do you think {g0}?"
     ], subfacts, background))
 
-@app.action('eliza_i_want')
+@chatbot.action('eliza_i_want')
 def eliza_i_want(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "What would it mean to you if you got {g0}?",
@@ -290,7 +290,7 @@ def eliza_i_want(w, subfacts, conclusions, background, io):
         "If you got {g0}, then what would you do?"
     ], subfacts, background))
 
-@app.action('eliza_mother')
+@chatbot.action('eliza_mother')
 def eliza_mother(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Tell me more about your mother.",
@@ -300,7 +300,7 @@ def eliza_mother(w, subfacts, conclusions, background, io):
         "Good family relations are important."
     ], subfacts, background))
 
-@app.action('eliza_father')
+@chatbot.action('eliza_father')
 def eliza_father(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Tell me more about your father.",
@@ -310,7 +310,7 @@ def eliza_father(w, subfacts, conclusions, background, io):
         "Do you have trouble showing affection with your family?"
     ], subfacts, background))
 
-@app.action('eliza_child')
+@chatbot.action('eliza_child')
 def eliza_child(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Did you have close friends as a child?",
@@ -320,7 +320,7 @@ def eliza_child(w, subfacts, conclusions, background, io):
         "How do you think your childhood experiences relate to your feelings today?"
     ], subfacts, background))
 
-@app.action('eliza_base')
+@chatbot.action('eliza_base')
 def eliza_base(w, subfacts, conclusions, background, io):
     io.write(make_answer([
         "Please tell me more.",

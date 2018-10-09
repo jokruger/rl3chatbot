@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from src import app
+from bot import chatbot
 
 class MyIO():
     def __init__(self):
@@ -21,5 +21,5 @@ print()
 io = MyIO()
 user_input = ''
 while True:
-    app.process(user_input, io)
+    chatbot.process(user_input, io)
     user_input = io.read()

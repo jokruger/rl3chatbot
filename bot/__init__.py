@@ -50,6 +50,6 @@ class Chatbot():
 
         action(weight, subfacts, conclusions, self.facts, io)
 
-app = Chatbot()
+chatbot = Chatbot()
 
-from src import actions_general, actions_eliza
+from bot import actions_general, actions_eliza

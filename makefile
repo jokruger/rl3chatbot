@@ -1,2 +1,2 @@
 all:
-	rl3c -p ./src/ai/intent/project.cfg -o intent.rl3c
+	rl3c -p ./nlp/intent/project.cfg -o intent.rl3c
