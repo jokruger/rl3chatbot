@@ -24,14 +24,14 @@ if
 annotation
     intent="eliza_why_dont_you" [weight="0.01", X=x]
 search text
-    \<{why_dont_you}\s{x_at_end}
+    \<{why} {dont} you\s{x_at_end}
 if
     true
 
 annotation
     intent="eliza_why_cant_i" [weight="0.01", X=x]
 search text
-    \<{why_cant_i}\s{x_at_end}
+    \<{why} {cannot} I\s{x_at_end}
 if
     true
 
@@ -80,7 +80,7 @@ if
 annotation
     intent="eliza_i_think" [weight="0.01", X=x]
 search text
-    \<{i_think}\s{x_at_end}
+    \<(I think|I am sure)\s{x_at_end}
 if
     true
 
@@ -101,7 +101,7 @@ if
 annotation
     intent="eliza_computer" [weight="0.01"]
 search text
-    \<{computer}\>
+    \<computers?\>
 if
     true
 
@@ -171,7 +171,7 @@ if
 annotation
     intent="eliza_i_feel" [weight="0.01", X=x]
 search text
-    \<{i_feel}\s{x_at_end}
+    \<I feel\s{x_at_end}
 if
     true
 
@@ -227,6 +227,27 @@ if
 annotation
     intent="eliza_i_remember" [weight="0.01", X=x]
 search text
-    \<{i_remember}\s{x_at_end}
+    \<i remember\s{x_at_end}
+if
+    true
+
+annotation
+    intent="eliza_do_you_remember" [weight="0.01", X=x]
+search text
+    \<(you remember|you recall)\s{x_at_end}
+if
+    true
+
+annotation
+    intent="eliza_i_forget" [weight="0.01", X=x]
+search text
+    \<i forget\s{x_at_end}
+if
+    true
+
+annotation
+    intent="eliza_did_you_forget" [weight="0.01", X=x]
+search text
+    \<did you forget\s{x_at_end}
 if
     true

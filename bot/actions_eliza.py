@@ -87,6 +87,13 @@ def eliza_base_question(w, subfacts, conclusions, context):
         "What is it you're really asking?",
         "Please consider whether you can answer your own question.",
         "Why don't you tell me?",
+        "Does that question interest you?",
+        "What is it you really want to know?",
+        "Are such questions much on your mind?",
+        "What answer would please you most?",
+        "What comes to mind when you ask that?",
+        "Have you asked such questions before?",
+        "Have you asked anyone else?",
     ], subfacts, context))
 
 @chatbot.action('eliza_i_need')
@@ -103,6 +110,10 @@ def eliza_why_dont_you(w, subfacts, conclusions, context):
         "Do you really think I don't {X}?",
         "Perhaps eventually I will {X}.",
         "Do you really want me to {X}?",
+        "Do you believe I don't {X}?",
+        "Perhaps I will {X} in good time.",
+        "Should you {X} yourself?",
+        "You want me to {X}?",
     ], subfacts, context))
 
 @chatbot.action('eliza_why_cant_i')
@@ -112,6 +123,9 @@ def eliza_why_cant_i(w, subfacts, conclusions, context):
         "If you could {X}, what would you do?",
         "I don't know - why can't you {X}?",
         "Have you really tried?",
+        "Do you want to be able to {X}?",
+        "Do you believe this will help you to {X}?",
+        "Have you any idea why you can't {X}?",
     ], subfacts, context))
 
 @chatbot.action('eliza_i_cant')
@@ -120,6 +134,11 @@ def eliza_i_cant(w, subfacts, conclusions, context):
         "How do you know you can't {X}?",
         "Perhaps you could {X} if you tried.",
         "What would it take for you to {X}?",
+        "How do you know that you can't {X}?",
+        "Have you tried?",
+        "Perhaps you could {X} now.",
+        "Do you really want to be able to {X}?",
+        "What if you could {X}?",
     ], subfacts, context))
 
 
@@ -133,6 +152,9 @@ def eliza_i_am(w, subfacts, conclusions, context):
         "Do you enjoy being {X}?",
         "Why do you tell me you're {X}?",
         "Why do you think you're {X}?",
+        "Is it because you are {X} that you came to me?",
+        "Do you believe it is normal to be {X}?",
+        "Do you know anyone else who is {X}?",
     ], subfacts, context))
 
 @chatbot.action('eliza_are_you')
@@ -142,6 +164,12 @@ def eliza_are_you(w, subfacts, conclusions, context):
         "Would you prefer it if I were not {X}?",
         "Perhaps you believe I am {X}.",
         "I may be {X} - what do you think?",
+        "Are you interested in whether I am {X} or not?",
+        "Would you prefer if I weren't {X}?",
+        "Perhaps I am {X} in your fantasies.",
+        "Do you sometimes think I am {X}?",
+        "Would it matter to you?",
+        "What if I were {X}?",
     ], subfacts, context))
 
 @chatbot.action('eliza_because')
@@ -151,6 +179,9 @@ def eliza_because(w, subfacts, conclusions, context):
         "What other reasons come to mind?",
         "Does that reason apply to anything else?",
         "If {X}, what else must be true?",
+        "Don't any other reasons come to mind?",
+        "Does that reason seem to explain anything else?",
+        "What other reasons might there be?",
     ], subfacts, context))
 
 @chatbot.action('eliza_sorry')
@@ -170,6 +201,8 @@ def eliza_hello(w, subfacts, conclusions, context):
         "Hello... I'm glad you could drop by today.",
         "Hi there... how are you today?",
         "Hello, how are you feeling today?",
+        "How do you do. Please state your problem.",
+        "Hi. What seems to be your problem?",
     ], subfacts, context))
 
 @chatbot.action('eliza_i_think')
@@ -193,6 +226,11 @@ def eliza_yes(w, subfacts, conclusions, context):
     return(make_answer([
         "You seem quite sure.",
         "OK, but can you elaborate a bit?",
+        "Please go on.",
+        "Please tell me more about this.",
+        "Why don't you tell me a little more about this.",
+        "I see.",
+        "I understand.",
     ], subfacts, context))
 
 @chatbot.action('eliza_computer')
@@ -202,6 +240,12 @@ def eliza_computer(w, subfacts, conclusions, context):
         "Does it seem strange to talk to a computer?",
         "How do computers make you feel?",
         "Do you feel threatened by computers?",
+        "Do computers worry you?",
+        "Why do you mention computers?",
+        "What do you think machines have to do with your problem?",
+        "Don't you think computers can help people?",
+        "What about machines worries you?",
+        "What do you think about machines?",
     ], subfacts, context))
 
 @chatbot.action('eliza_is_it')
@@ -226,6 +270,9 @@ def eliza_can_you(w, subfacts, conclusions, context):
         "What makes you think I can't {X}?",
         "If I could {X}, then what?",
         "Why do you ask if I can {X}?",
+        "You believe I can {X} don't you?",
+        "You want me to be able to {X}.",
+        "Perhaps you would like to be able to {X} yourself.",
     ], subfacts, context))
 
 @chatbot.action('eliza_can_i')
@@ -234,6 +281,7 @@ def eliza_can_i(w, subfacts, conclusions, context):
         "Perhaps you don't want to {X}.",
         "Do you want to be able to {X}?",
         "If you could {X}, would you?",
+        "Whether or not you can {X} depends on you more than on me.",
     ], subfacts, context))
 
 @chatbot.action('eliza_you_are')
@@ -246,6 +294,10 @@ def eliza_you_are(w, subfacts, conclusions, context):
         "Why do you say I am {X}?",
         "Why do you think I am {X}?",
         "Are we talking about you, or me?",
+        "What makes you think I am {X}?",
+        "Does it please you to believe I am {X}?",
+        "Do you sometimes wish you were {X}?",
+        "Perhaps you would like to be {X}.",
     ], subfacts, context))
 
 @chatbot.action('eliza_i_dont')
@@ -254,6 +306,8 @@ def eliza_i_dont(w, subfacts, conclusions, context):
         "Don't you really {X}?",
         "Why don't you {X}?",
         "Do you want to {X}?",
+        "Do you wish to be able to {X}?",
+        "Does that trouble you?",
     ], subfacts, context))
 
 @chatbot.action('eliza_i_feel')
@@ -263,6 +317,9 @@ def eliza_i_feel(w, subfacts, conclusions, context):
         "Do you often feel {X}?",
         "When do you usually feel {X}?",
         "When you feel {X}, what do you do?",
+        "Tell me more about such feelings.",
+        "Do you enjoy feeling {X}?",
+        "Of what does feeling {X} remind you?",
     ], subfacts, context))
 
 @chatbot.action('eliza_i_have')
@@ -360,4 +417,37 @@ def eliza_i_remember(w, subfacts, conclusions, context):
         "What in the present situation reminds you of {X}?",
         "What is the connection between me and {X}?",
         "What else does {X} remind you of?",
+    ], subfacts, context))
+
+@chatbot.action('eliza_do_you_remember')
+def eliza_do_you_remember(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Did you think I would forget {X}?",
+        "Why do you think I should recall {X} now?",
+        "What about {X}?",
+        "You mentioned {X}?",
+        "How could I forget {X}?",
+        "What about {X} should I remember?",
+    ], subfacts, context))
+
+@chatbot.action('eliza_i_forget')
+def eliza_i_forget(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Can you think of why you might forget {X}?",
+        "Why can't you remember {X}?",
+        "How often do you think of {X}?",
+        "Does it bother you to forget that?",
+        "Could it be a mental block?",
+        "Are you generally forgetful?",
+        "Do you think you are suppressing {X}?",
+    ], subfacts, context))
+
+@chatbot.action('eliza_did_you_forget')
+def eliza_did_you_forget(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Why do you ask?",
+        "Are you sure you told me?",
+        "Would it bother you if I forgot {X}?",
+        "Why should I recall {X} just now?",
+        "Tell me more about {X}.",
     ], subfacts, context))
