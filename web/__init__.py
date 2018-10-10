@@ -18,18 +18,18 @@ file_handler.setLevel(logging.WARN)
 file_handler.setFormatter(Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
 app.logger.addHandler(file_handler)
 
-def log_message(ip, uid, msg):
+def log_message(ip, sid, msg):
     with open('messages.log', 'a') as f:
         fcntl.flock(f, fcntl.LOCK_EX)
-        f.write('%s %s : %s\n' % (ip, uid, msg))
+        f.write('%s %s %s\n' % (str(ip), str(sid), msg))
         fcntl.flock(f, fcntl.LOCK_UN)
 
-def init_uid():
-    uid = session.get('uid', None)
-    if not uid:
-        uid = uuid.uuid1()
-        session['uid'] = uid
-    return uid
+def init_sid(reset=False):
+    sid = session.get('sid', None)
+    if not sid or reset:
+        sid = uuid.uuid1().hex
+        session['sid'] = sid
+    return sid
 
 @app.before_request
 def before_request():
@@ -42,18 +42,18 @@ def after_request(response):
 
 @app.route('/')
 def view_index():
-    uid = init_uid()
+    sid = init_sid(reset=True)
 
     return render_template('page_index.html', debug_mode=app.config['DEBUG'], page='index', name=chatbot_name)
 
 @app.route('/chat', methods=['POST'])
 def view_chat():
-    uid = init_uid()
+    sid = init_sid()
 
     message = request.form.get('message', '')
     context = request.form.get('context', '')
 
-    log_message(str(request.remote_addr), str(uid), message)
+    log_message(request.remote_addr, sid, 'USR: ' + message)
 
     try:
         answer, context = chatbot.process(message, context)
@@ -64,5 +64,7 @@ def view_chat():
     except Exception as e:
         message = 'ouch...'
         app.logger.exception(e)
+
+    log_message(request.remote_addr, sid, 'BOT: ' + message)
 
     return jsonify(message=message, context=context)
