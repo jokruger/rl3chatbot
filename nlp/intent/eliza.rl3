@@ -1,58 +1,65 @@
 include "../common.rl3"
 
 annotation
-    intent="eliza_i_need" [weight="0.01", g0=g0]
+    intent="eliza_base" [weight="0.001", X=x]
 search text
-    \<{i_need}\s{g0_at_end}
+    ^{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_why_dont_you" [weight="0.01", g0=g0]
-search text
-    \<{why_dont_you}\s{g0_at_end}
-if
-    true
-
-annotation
-    intent="eliza_why_cant_i" [weight="0.01", g0=g0]
-search text
-    \<{why_cant_i}\s{g0_at_end}
-if
-    true
-
-annotation
-    intent="eliza_i_cant" [weight="0.01", g0=g0]
-search text
-    \<{i_cant}\s{g0_at_end}
-if
-    true
-
-annotation
-    intent="eliza_i_am" [weight="0.01", g0=g0]
-search text
-    \<{i_am}\s{g0_at_end}
-if
-    true
-
-annotation
-    intent="eliza_are_you" [weight="0.01", g0=g0]
-search text
-    \<{are_you}\s{g0_at_end}
-if
-    true
-
-annotation
-    intent="eliza_base_question" [weight="0.01"]
+    intent="eliza_base_question" [weight="0.005"]
 search text
     (\<{base_question}\s|\?)
 if
     true
 
 annotation
-    intent="eliza_because" [weight="0.01", g0=g0]
+    intent="eliza_i_need" [weight="0.01", X=x]
 search text
-    \<{because}\s{g0_at_end}
+    \<{i_need}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="eliza_why_dont_you" [weight="0.01", X=x]
+search text
+    \<{why_dont_you}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="eliza_why_cant_i" [weight="0.01", X=x]
+search text
+    \<{why_cant_i}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="eliza_i_cant" [weight="0.01", X=x]
+search text
+    \<{i_cant}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="eliza_i_am" [weight="0.01", X=x]
+search text
+    \<{i_am}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="eliza_are_you" [weight="0.01", X=x]
+search text
+    \<{are_you}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="eliza_because" [weight="0.01", X=x]
+search text
+    \<{because}\s{x_at_end}
 if
     true
 
@@ -71,9 +78,9 @@ if
     true
 
 annotation
-    intent="eliza_i_think" [weight="0.01", g0=g0]
+    intent="eliza_i_think" [weight="0.01", X=x]
 search text
-    \<{i_think}\s{g0_at_end}
+    \<{i_think}\s{x_at_end}
 if
     true
 
@@ -120,106 +127,106 @@ if
     true
 
 annotation
-    intent="eliza_is_it" [weight="0.01", g0=g0]
+    intent="eliza_is_it" [weight="0.01", X=x]
 search text
-    \<{is_it}\s{g0_at_end}
+    \<{is_it}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_it_is" [weight="0.01", g0=g0]
+    intent="eliza_it_is" [weight="0.01", X=x]
 search text
-    \<{it_is}\s{g0_at_end}
+    \<{it_is}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_can_you" [weight="0.01", g0=g0]
+    intent="eliza_can_you" [weight="0.01", X=x]
 search text
-    \<{can_you}\s{g0_at_end}
+    \<{can_you}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_can_i" [weight="0.01", g0=g0]
+    intent="eliza_can_i" [weight="0.01", X=x]
 search text
-    \<{can_i}\s{g0_at_end}
+    \<{can_i}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_you_are" [weight="0.01", g0=g0]
+    intent="eliza_you_are" [weight="0.01", X=x]
 search text
-    \<{you_are}\s{g0_at_end}
+    \<{you_are}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_i_dont" [weight="0.01", g0=g0]
+    intent="eliza_i_dont" [weight="0.01", X=x]
 search text
-    \<{i_dont}\s{g0_at_end}
+    \<{i_dont}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_i_feel" [weight="0.01", g0=g0]
+    intent="eliza_i_feel" [weight="0.01", X=x]
 search text
-    \<{i_feel}\s{g0_at_end}
+    \<{i_feel}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_i_have" [weight="0.01", g0=g0]
+    intent="eliza_i_have" [weight="0.01", X=x]
 search text
-    \<{i_have}\s{g0_at_end}
+    \<{i_have}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_i_would" [weight="0.01", g0=g0]
+    intent="eliza_i_would" [weight="0.01", X=x]
 search text
-    \<{i_would}\s{g0_at_end}
+    \<{i_would}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_is_there" [weight="0.01", g0=g0]
+    intent="eliza_is_there" [weight="0.01", X=x]
 search text
-    \<{is_there}\s{g0_at_end}
+    \<{is_there}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_my" [weight="0.01", g0=g0]
+    intent="eliza_my" [weight="0.01", X=x]
 search text
-    \<{my}\s{g0_at_end}
+    \<{my}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_you" [weight="0.01", g0=g0]
+    intent="eliza_you" [weight="0.01", X=x]
 search text
-    \<{you}\s{g0_at_end}
+    \<{you}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_why" [weight="0.01", g0=g0]
+    intent="eliza_why" [weight="0.01", X=x]
 search text
-    \<{why}\s{g0_at_end}
+    \<{why}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_i_want" [weight="0.01", g0=g0]
+    intent="eliza_i_want" [weight="0.01", X=x]
 search text
-    \<{i_want}\s{g0_at_end}
+    \<{i_want}\s{x_at_end}
 if
     true
 
 annotation
-    intent="eliza_base" [weight="0.01", g0=g0]
+    intent="eliza_i_remember" [weight="0.01", X=x]
 search text
-    ^{g0_at_end}
+    \<{i_remember}\s{x_at_end}
 if
     true

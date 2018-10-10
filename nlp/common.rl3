@@ -3,8 +3,8 @@ include <common.rl3>
 pattern eos [inline]
     ([!\.\?]|$)
 
-pattern g0_at_end [inline]
-    {g0=[^!\.\?]+}{eos}
+pattern x_at_end [inline]
+    {x=[^!\.\?]+}{eos}
 
 pattern goodbye [icase] [inline]
     (goodbye|adieu|bye-?bye|adios|cheerio|ciao)
@@ -37,7 +37,7 @@ pattern because [icase] [inline]
     (because)
 
 pattern sorry [icase] [inline]
-    (sorry)
+    (sorry|apologize|apology)
 
 pattern hello [icase] [inline]
     (hello|hi|hola)
@@ -77,6 +77,9 @@ pattern i_would [icase] [inline]
 
 pattern i_want [icase] [inline]
     (I want)
+
+pattern i_remember [icase] [inline]
+    (i remember)
 
 pattern are_you [icase] [inline]
     (Are you)
