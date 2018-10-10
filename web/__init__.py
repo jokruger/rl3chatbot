@@ -19,7 +19,7 @@ file_handler.setFormatter(Formatter('%(asctime)s %(levelname)s: %(message)s [in 
 app.logger.addHandler(file_handler)
 
 def log_message(ip, sid, msg):
-    with open('messages.log', 'a') as f:
+    with open('dialogs', 'a') as f:
         fcntl.flock(f, fcntl.LOCK_EX)
         f.write('%s %s %s\n' % (str(ip), str(sid), msg))
         fcntl.flock(f, fcntl.LOCK_UN)
