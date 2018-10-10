@@ -60,8 +60,10 @@
             $("#chat-panel").scrollTop($("#chat-panel")[0].scrollHeight);
             $.post("/chat", {message: message, context: context}, function(result) {
                 context = result.context;
-                $('#typing').remove();
-                tell_bot(result.message);
+                setTimeout( function() {
+                    $('#typing').remove();
+                    tell_bot(result.message);
+                }, 1000);
             });
         }
 
