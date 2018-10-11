@@ -33,7 +33,7 @@ if
 annotation
     intent="smalltalk_because" [weight="0.01", X=x]
 search text
-    \<{because}\s{x_at_end}
+    \<because\s{x_at_end}
 if
     true
 
@@ -107,7 +107,7 @@ if
 annotation
     intent="smalltalk_why" [weight="0.01", X=x]
 search text
-    \<{why}\s{x_at_end}
+    \<why\s{x_at_end}
 if
     true
 

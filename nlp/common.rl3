@@ -15,11 +15,11 @@ pattern mother [icase] [inline]
 pattern father [icase] [inline]
     (father|dad|daddy|papa)
 
-pattern my [icase] [inline]
-    (my)
+pattern i [icase] [inline]
+    (I(\s(am|{APOSTROPHE}?m|do|did))?|me)
 
-pattern you [icase] [inline]
-    (you)
+pattern my [icase] [inline]
+    (my|mine)
 
 pattern cannot [icase] [inline]
     (can\s?not|can{APOSTROPHE}?t)
@@ -27,14 +27,8 @@ pattern cannot [icase] [inline]
 pattern dont [icase] [inline]
     (do\s?not|don{APOSTROPHE}?t)
 
-pattern why [icase] [inline]
-    (why)
-
 pattern base_question [icase] [inline]
-    (what|how|when|{why}|who|where)
-
-pattern because [icase] [inline]
-    (because)
+    (what|how|when|why|who|where)
 
 pattern sorry [icase] [inline]
     (sorry|apologize|apology)
@@ -43,31 +37,13 @@ pattern hello [icase] [inline]
     (hello|hi|hola|hey|howdy|hai|yo)
 
 pattern friend [icase] [inline]
-    (friend)
+    (friend|buddy|comrade)
 
 pattern yes [icase] [inline]
     (yes|yeah|yep|yup)
 
-pattern i_need [icase] [inline]
-    (I need)
-
-pattern i_cant [icase] [inline]
-    (I {cannot})
-
-pattern i_dont [icase] [inline]
-    (I {dont})
-
 pattern i_am [icase] [inline]
     (I am|I{APOSTROPHE}?m)
-
-pattern i_have [icase] [inline]
-    (I have)
-
-pattern i_would [icase] [inline]
-    (I would)
-
-pattern i_want [icase] [inline]
-    (I want)
 
 pattern am_i [icase] [inline]
     (am I)
@@ -86,9 +62,3 @@ pattern is_it [icase] [inline]
 
 pattern it_is [icase] [inline]
     (It is)
-
-pattern can_you [icase] [inline]
-    (Can you)
-
-pattern can_i [icase] [inline]
-    (Can I)
