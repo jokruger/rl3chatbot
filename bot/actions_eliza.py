@@ -451,3 +451,35 @@ def eliza_did_you_forget(w, subfacts, conclusions, context):
         "Why should I recall {X} just now?",
         "Tell me more about {X}.",
     ], subfacts, context))
+
+@chatbot.action('eliza_if')
+def eliza_if(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Do you think it's likely that {X}?",
+        "Do you wish that {X}?",
+        "What do you know about {X}?",
+        "Really, if {X}?",
+        "What would you do if {X}?",
+        "But what are the chances that {X}?",
+        "What does this speculation lead to?",
+    ], subfacts, context))
+
+@chatbot.action('eliza_perhaps')
+def eliza_perhaps(w, subfacts, conclusions, context):
+    return(make_answer([
+        "You don't seem quite certain.",
+        "Why the uncertain tone?",
+        "Can't you be more positive?",
+        "You aren't sure?",
+        "Don't you know?",
+        "How likely, would you estimate?",
+    ], subfacts, context))
+
+@chatbot.action('eliza_am_i')
+def eliza_am_i(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Do you believe you are {X}?",
+        "Would you want to be {X}?",
+        "Do you wish I would tell you you are {X}?",
+        "What would it mean if you were {X}?",
+    ], subfacts, context))
