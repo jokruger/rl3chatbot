@@ -33,7 +33,7 @@ if
 annotation
     intent="smalltalk_no" [weight="0.01"]
 search text
-    (\<(?i:(nope|nah))\>|^(?i:no)$)
+    (\<(?i:(nope|nah))\>|^(?i:n+o+){eos})
 if
     true
 

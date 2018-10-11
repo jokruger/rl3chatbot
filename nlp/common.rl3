@@ -43,10 +43,10 @@ pattern friend [icase] [inline]
     (friend|buddy|comrade)
 
 pattern yes [icase] [inline]
-    (yes|yeah|yep|yup)
+    (y+e+s+|yeah|yep|yup)
 
 pattern no [icase] [inline]
-    (no|nope|nah)
+    (n+o+|nope|nah)
 
 pattern i_am [icase] [inline]
     (I am|I{APOSTROPHE}?m)
