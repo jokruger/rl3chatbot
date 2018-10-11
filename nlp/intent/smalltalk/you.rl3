@@ -5,7 +5,7 @@ include "../../common.rl3"
 annotation
     intent="smalltalk_you" [weight="0.01", X=x]
 search text
-    \<you\s{x_at_end}
+    \<(?i:you)(\s{x_at_end}|\>)
 if
     true
 
@@ -14,7 +14,14 @@ if
 annotation
     intent="smalltalk_you_are" [weight="0.01", X=x]
 search text
-    \<{you_are}\s{x_at_end}
+    \<(?i:{you_are})(\s{x_at_end}|\>)
+if
+    true
+
+annotation
+    intent="smalltalk_you_x_me" [weight="0.01", X=x]
+search text
+    \<(?i:you\s{x=[^!\.\?]+}\sme)\>
 if
     true
 
@@ -23,34 +30,41 @@ if
 annotation
     intent="smalltalk_why_dont_you" [weight="0.01", X=x]
 search text
-    \<why {dont} you\s{x_at_end}
+    \<(?i:why {dont} you)(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_are_you" [weight="0.01", X=x]
 search text
-    \<{are_you}\s{x_at_end}
+    \<(?i:{are_you})(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_can_you" [weight="0.01", X=x]
 search text
-    \<Can you\s{x_at_end}
+    \<(?i:can you)(\s{x_at_end}|\>)
+if
+    true
+
+annotation
+    intent="smalltalk_was_you" [weight="0.01", X=x]
+search text
+    \<(?i:was you)(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_do_you_remember" [weight="0.01", X=x]
 search text
-    \<(you remember|you recall)\s{x_at_end}
+    \<(?i:you (remember|recall))(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_did_you_forget" [weight="0.01", X=x]
 search text
-    \<did you forget\s{x_at_end}
+    \<(?i:did you forget)(\s{x_at_end}|\>)
 if
     true

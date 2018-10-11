@@ -15,6 +15,9 @@ pattern mother [icase] [inline]
 pattern father [icase] [inline]
     (father|dad|daddy|papa)
 
+pattern relative [icase] [inline]
+    (mom|dad|mother|father|bro|brother|sis|sister|cousin|aunt|uncle|grandma|grandmother|grandpa|grandfather)
+
 pattern i [icase] [inline]
     (I(\s(am|{APOSTROPHE}?m|do|did))?|me)
 
@@ -42,6 +45,9 @@ pattern friend [icase] [inline]
 pattern yes [icase] [inline]
     (yes|yeah|yep|yup)
 
+pattern no [icase] [inline]
+    (no|nope|nah)
+
 pattern i_am [icase] [inline]
     (I am|I{APOSTROPHE}?m)
 
@@ -62,3 +68,6 @@ pattern is_it [icase] [inline]
 
 pattern it_is [icase] [inline]
     (It is)
+
+pattern rude_word [icase] [inline]
+    (fuck|fucker|shit|damn|shut up|bitch|go hell|go to hell)

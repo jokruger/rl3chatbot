@@ -1,0 +1,14 @@
+include "../../common.rl3"
+
+#=== MENTION ===
+
+annotation
+    intent="smalltalk_your" [weight="0.01", X=x]
+search text
+    \<(?i:your)(\s{x_at_end}|\>)
+if
+    true
+
+#=== AFFIRMATION ===
+
+#=== QUESTION ===

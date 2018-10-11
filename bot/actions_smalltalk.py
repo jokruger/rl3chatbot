@@ -99,9 +99,16 @@ def smalltalk_base_question(w, subfacts, conclusions, context):
 @chatbot.action('smalltalk_i_need')
 def smalltalk_i_need(w, subfacts, conclusions, context):
     return(make_answer([
-        "Why do you need {X}?",
+        "Why do you want {X}?",
         "Would it really help you to get {X}?",
         "Are you sure you need {X}?",
+        "What would it mean to you if you got {X}?",
+        "What would you do if you got {X}?",
+        "If you got {X}, then what would you do?",
+        "Suppose you got {X} soon.",
+        "What if you never got {X}?",
+        "What would getting {X} mean to you?",
+        "What does wanting {X} have to do with this discussion?",
     ], subfacts, context))
 
 @chatbot.action('smalltalk_why_dont_you')
@@ -211,6 +218,8 @@ def smalltalk_i_think(w, subfacts, conclusions, context):
         "Do you doubt {X}?",
         "Do you really think so?",
         "But you're not sure {X}?",
+        "But you are not sure you {X}.",
+        "Do you really doubt you {X}?",
     ], subfacts, context))
 
 @chatbot.action('smalltalk_friend')
@@ -231,6 +240,15 @@ def smalltalk_yes(w, subfacts, conclusions, context):
         "Why don't you tell me a little more about this.",
         "I see.",
         "I understand.",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_no')
+def smalltalk_no(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Are you saying no just to be negative?",
+        "Does this make you feel unhappy?",
+        "Why not?",
+        "Why 'no'?",
     ], subfacts, context))
 
 @chatbot.action('smalltalk_computer')
@@ -354,12 +372,23 @@ def smalltalk_my(w, subfacts, conclusions, context):
         "When your {X}, how do you feel?",
     ], subfacts, context))
 
+@chatbot.action('smalltalk_my_relative')
+def smalltalk_my_relative(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Tell me more about your family.",
+        "Who else in your family {X}?",
+    ], subfacts, context))
+
 @chatbot.action('smalltalk_you')
 def smalltalk_you(w, subfacts, conclusions, context):
     return(make_answer([
         "We should be discussing you, not me.",
         "Why do you say that about me?",
         "Why do you care whether I {X}?",
+        "We were discussing you - not me.",
+        "Oh, I {X}?",
+        "You're not really talking about me - are you?",
+        "What are your feelings now?",
     ], subfacts, context))
 
 @chatbot.action('smalltalk_why')
@@ -367,15 +396,6 @@ def smalltalk_why(w, subfacts, conclusions, context):
     return(make_answer([
         "Why don't you tell me the reason why {X}?",
         "Why do you think {X}?",
-    ], subfacts, context))
-
-@chatbot.action('smalltalk_i_want')
-def smalltalk_i_want(w, subfacts, conclusions, context):
-    return(make_answer([
-        "What would it mean to you if you got {X}?",
-        "Why do you want {X}?",
-        "What would you do if you got {X}?",
-        "If you got {X}, then what would you do?",
     ], subfacts, context))
 
 @chatbot.action('smalltalk_mother')
@@ -482,4 +502,141 @@ def smalltalk_am_i(w, subfacts, conclusions, context):
         "Would you want to be {X}?",
         "Do you wish I would tell you you are {X}?",
         "What would it mean if you were {X}?",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_i_dreamed')
+def smalltalk_i_dreamed(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Really, {X}?",
+        "Have you ever fantasized {X} while you were awake?",
+        "Have you ever dreamed {X} before?",
+        "What does that dream suggest to you?",
+        "Do you dream often?",
+        "What persons appear in your dreams?",
+        "Do you believe that dreams have something to do with your problem?",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_they_are')
+def smalltalk_are(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Did you think they might not be {X}?",
+        "Would you like it if they were not {X}?",
+        "What if they were not {X}?",
+        "Are they always {X}?",
+        "Are you positive they are {X}?",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_your')
+def smalltalk_your(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Why are you concerned over my {X}?",
+        "What about your own {X}?",
+        "Are you worried about someone else's {X}?",
+        "Really, my {X}?",
+        "What makes you think of my {X}?"
+        "Do you want my {X}?",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_was_i')
+def smalltalk_was_i(w, subfacts, conclusions, context):
+    return(make_answer([
+        "What if you were {X}?",
+        "Do you think you were {X}?",
+        "Were you {X}?",
+        "What would it mean if you were {X}?",
+        "What does '{X}' suggest to you?",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_i_was')
+def smalltalk_i_was(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Were you really?",
+        "Why do you tell me you were {X} now?",
+        "Perhaps I already know you were {X}.",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_was_you')
+def smalltalk_was_you(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Would you like to believe I was {X}?",
+        "What suggests that I was {X}?",
+        "What do you think?",
+        "Perhaps I was {X}.",
+        "What if I had been {X}?",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_i_am_negative')
+def smalltalk_i_am_negative(w, subfacts, conclusions, context):
+    return(make_answer([
+        "I am sorry to hear that you are {X}.",
+        "Do you think coming here will help you not to be {X}?",
+        "I'm sure it's not pleasant to be {X}.",
+        "Can you explain what made you {X}?",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_i_am_positive')
+def smalltalk_i_am_positive(w, subfacts, conclusions, context):
+    return(make_answer([
+        "How have I helped you to be {X}?",
+        "Has your treatment made you {X}?",
+        "What makes you {X} just now?",
+        "Can you explain why you are {X}?",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_i_x_you')
+def smalltalk_i_x_you(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Perhaps in your fantasies we {X} each other.",
+        "Do you wish to {X} me?",
+        "You seem to need to {X} me.",
+        "Do you {X} anyone else?",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_you_x_me')
+def smalltalk_you_x_me(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Why do you think I {X} you?",
+        "You like to think I {X} you - don't you?",
+        "What makes you think I {X} you?",
+        "Really, I {X} you?",
+        "Do you wish to believe I {X} you?",
+        "Suppose I did {X} you - what would that mean?",
+        "Does someone else believe I {X} you?",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_no_one')
+def smalltalk_no_one(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Are you sure, no one {X}?",
+        "Surely someone {X}.",
+        "Can you think of anyone at all?",
+        "Are you thinking of a very special person?",
+        "Who, may I ask?",
+        "You have a particular person in mind, don't you?",
+        "Who do you think you are talking about?",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_everyone')
+def smalltalk_everyone(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Really, everyone?",
+        "Surely not everyone.",
+        "Can you think of anyone in particular?",
+        "Who, for example?",
+        "Are you thinking of a very special person?",
+        "Who, may I ask?",
+        "Someone special perhaps?",
+        "You have a particular reason in mind, don't you?",
+        "Who do you think you're talking about?",
+    ], subfacts, context))
+
+@chatbot.action('smalltalk_rude_word')
+def smalltalk_rude_word(w, subfacts, conclusions, context):
+    return(make_answer([
+        "Does it make you feel strong to use that kind of language?",
+        "Are you venting your feelings now?",
+        "Are you angry?",
+        "Does this topic make you feel angry?",
+        "Is something making you feel angry?",
+        "Does using that kind of language make you feel better?",
     ], subfacts, context))

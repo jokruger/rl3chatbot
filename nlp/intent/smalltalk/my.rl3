@@ -5,7 +5,14 @@ include "../../common.rl3"
 annotation
     intent="smalltalk_my" [weight="0.01", X=x]
 search text
-    \<{my}\s{x_at_end}
+    \<(?i:{my})(\s{x_at_end}|\>)
+if
+    true
+
+annotation
+    intent="smalltalk_my_relative" [weight="0.01", X=x]
+search text
+    \<(?i:{my} {relative})(\s{x_at_end}|\>)
 if
     true
 

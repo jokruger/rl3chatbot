@@ -3,7 +3,7 @@ include "../../common.rl3"
 annotation
     intent="smalltalk_base" [weight="0.001", X=x]
 search text
-    ^{x_at_end}
+    ^({x_at_end}|.*$)
 if
     true
 
@@ -12,77 +12,112 @@ if
 annotation
     intent="smalltalk_if" [weight="0.01", X=x]
 search text
-    \<if\s{x_at_end}
+    \<(?i:if)(\s{x_at_end}|\>)
+if
+    true
+
+annotation
+    intent="smalltalk_they_are" [weight="0.01", X=x]
+search text
+    \<(?i:they are)(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_yes" [weight="0.01"]
 search text
-    \<{yes}\>
+    \<(?i:{yes})\>
+if
+    true
+
+annotation
+    intent="smalltalk_no" [weight="0.01"]
+search text
+    (\<(?i:(nope|nah))\>|^(?i:no)$)
 if
     true
 
 annotation
     intent="smalltalk_perhaps" [weight="0.01", X=x]
 search text
-    \<perhaps\s{x_at_end}
+    \<(?i:perhaps)(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_because" [weight="0.01", X=x]
 search text
-    \<because\s{x_at_end}
+    \<(?i:because)(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_sorry" [weight="0.01"]
 search text
-    \<{sorry}\>
+    \<(?i:{sorry})\>
 if
     true
 
 annotation
     intent="smalltalk_hello" [weight="0.01"]
 search text
-    \<{hello}\>
+    \<(?i:{hello})\>
 if
     true
 
 annotation
     intent="smalltalk_friend" [weight="0.01"]
 search text
-    \s{friend}\s
+    \<{friend}\>
 if
     true
 
 annotation
     intent="smalltalk_computer" [weight="0.01"]
 search text
-    \<computers?\>
+    \<(?i:computers?)\>
 if
     true
 
 annotation
     intent="smalltalk_mother" [weight="0.01"]
 search text
-    \<{mother}\>
+    \<(?i:{mother})\>
 if
     true
 
 annotation
     intent="smalltalk_father" [weight="0.01"]
 search text
-    \<{father}\>
+    \<(?i:{father})\>
 if
     true
 
 annotation
     intent="smalltalk_child" [weight="0.01"]
 search text
-    \<child
+    \<(?i:child)
+if
+    true
+
+annotation
+    intent="smalltalk_no_one" [weight="0.01", X=x]
+search text
+    \<(?i:no one)(\s{x_at_end}|\>)
+if
+    true
+
+annotation
+    intent="smalltalk_everyone" [weight="0.01", X=x]
+search text
+    \<(?i:everyone)(\s{x_at_end}|\>)
+if
+    true
+
+annotation
+    intent="smalltalk_rude_word" [weight="0.01", X=x]
+search text
+    \<(?i:{rude_word})\>
 if
     true
 
@@ -91,7 +126,7 @@ if
 annotation
     intent="smalltalk_it_is" [weight="0.01", X=x]
 search text
-    \<{it_is}\s{x_at_end}
+    \<(?i:{it_is})(\s{x_at_end}|\>)
 if
     true
 
@@ -100,27 +135,27 @@ if
 annotation
     intent="smalltalk_base_question" [weight="0.01"]
 search text
-    (\<{base_question}\s|\?)
+    (\<(?i:{base_question})\s|\?)
 if
     true
 
 annotation
     intent="smalltalk_why" [weight="0.01", X=x]
 search text
-    \<why\s{x_at_end}
+    \<(?i:why)(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_is_it" [weight="0.01", X=x]
 search text
-    \<{is_it}\s{x_at_end}
+    \<(?i:{is_it})(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_is_there" [weight="0.01", X=x]
 search text
-    \<{is_there}\s{x_at_end}
+    \<(?i:{is_there})(\s{x_at_end}|\>)
 if
     true
