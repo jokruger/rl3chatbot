@@ -1,0 +1,103 @@
+include "../../common.rl3"
+
+#=== AFFIRMATION ===
+
+annotation
+    intent="smalltalk_i_am" [weight="0.01", X=x]
+search text
+    \<{i_am}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_i_need" [weight="0.01", X=x]
+search text
+    \<{i_need}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_i_think" [weight="0.01", X=x]
+search text
+    \<(I think|I am sure)\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_i_feel" [weight="0.01", X=x]
+search text
+    \<I feel\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_i_forget" [weight="0.01", X=x]
+search text
+    \<i forget\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_i_want" [weight="0.01", X=x]
+search text
+    \<{i_want}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_i_remember" [weight="0.01", X=x]
+search text
+    \<i remember\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_i_have" [weight="0.01", X=x]
+search text
+    \<{i_have}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_i_would" [weight="0.01", X=x]
+search text
+    \<{i_would}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_i_cant" [weight="0.01", X=x]
+search text
+    \<{i_cant}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_i_dont" [weight="0.01", X=x]
+search text
+    \<{i_dont}\s{x_at_end}
+if
+    true
+
+#=== QUESTION ===
+
+annotation
+    intent="smalltalk_why_cant_i" [weight="0.01", X=x]
+search text
+    \<{why} {cannot} I\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_can_i" [weight="0.01", X=x]
+search text
+    \<{can_i}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_am_i" [weight="0.01", X=x]
+search text
+    \<{am_i}\s{x_at_end}
+if
+    true

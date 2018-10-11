@@ -56,4 +56,4 @@ class Chatbot():
 chatbot_name = 'RL3ChatBot'
 chatbot = Chatbot()
 
-from bot import actions_general, actions_eliza
+from bot import actions_general, actions_smalltalk

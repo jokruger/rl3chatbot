@@ -53,8 +53,8 @@ def make_answer(templates, subfacts, context):
 
     return None
 
-@chatbot.action('eliza_base')
-def eliza_base(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_base')
+def smalltalk_base(w, subfacts, conclusions, context):
     return(make_answer([
         "Please tell me more.",
         "Let's change focus a bit... Tell me about your family.",
@@ -74,8 +74,8 @@ def eliza_base(w, subfacts, conclusions, context):
         "Does talking about this bother you?",
     ], subfacts, context))
 
-@chatbot.action('eliza_base_question')
-def eliza_base_question(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_base_question')
+def smalltalk_base_question(w, subfacts, conclusions, context):
     return(make_answer([
         "Why do you ask?",
         "Why do you ask that?",
@@ -96,16 +96,16 @@ def eliza_base_question(w, subfacts, conclusions, context):
         "Have you asked anyone else?",
     ], subfacts, context))
 
-@chatbot.action('eliza_i_need')
-def eliza_i_need(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_i_need')
+def smalltalk_i_need(w, subfacts, conclusions, context):
     return(make_answer([
         "Why do you need {X}?",
         "Would it really help you to get {X}?",
         "Are you sure you need {X}?",
     ], subfacts, context))
 
-@chatbot.action('eliza_why_dont_you')
-def eliza_why_dont_you(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_why_dont_you')
+def smalltalk_why_dont_you(w, subfacts, conclusions, context):
     return(make_answer([
         "Do you really think I don't {X}?",
         "Perhaps eventually I will {X}.",
@@ -116,8 +116,8 @@ def eliza_why_dont_you(w, subfacts, conclusions, context):
         "You want me to {X}?",
     ], subfacts, context))
 
-@chatbot.action('eliza_why_cant_i')
-def eliza_why_cant_i(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_why_cant_i')
+def smalltalk_why_cant_i(w, subfacts, conclusions, context):
     return(make_answer([
         "Do you think you should be able to {X}?",
         "If you could {X}, what would you do?",
@@ -128,8 +128,8 @@ def eliza_why_cant_i(w, subfacts, conclusions, context):
         "Have you any idea why you can't {X}?",
     ], subfacts, context))
 
-@chatbot.action('eliza_i_cant')
-def eliza_i_cant(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_i_cant')
+def smalltalk_i_cant(w, subfacts, conclusions, context):
     return(make_answer([
         "How do you know you can't {X}?",
         "Perhaps you could {X} if you tried.",
@@ -142,8 +142,8 @@ def eliza_i_cant(w, subfacts, conclusions, context):
     ], subfacts, context))
 
 
-@chatbot.action('eliza_i_am')
-def eliza_i_am(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_i_am')
+def smalltalk_i_am(w, subfacts, conclusions, context):
     return(make_answer([
         "Did you come to me because you are {X}?",
         "How long have you been {X}?",
@@ -157,8 +157,8 @@ def eliza_i_am(w, subfacts, conclusions, context):
         "Do you know anyone else who is {X}?",
     ], subfacts, context))
 
-@chatbot.action('eliza_are_you')
-def eliza_are_you(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_are_you')
+def smalltalk_are_you(w, subfacts, conclusions, context):
     return(make_answer([
         "Why does it matter whether I am {X}?",
         "Would you prefer it if I were not {X}?",
@@ -172,8 +172,8 @@ def eliza_are_you(w, subfacts, conclusions, context):
         "What if I were {X}?",
     ], subfacts, context))
 
-@chatbot.action('eliza_because')
-def eliza_because(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_because')
+def smalltalk_because(w, subfacts, conclusions, context):
     return(make_answer([
         "Is that the real reason?",
         "What other reasons come to mind?",
@@ -184,8 +184,8 @@ def eliza_because(w, subfacts, conclusions, context):
         "What other reasons might there be?",
     ], subfacts, context))
 
-@chatbot.action('eliza_sorry')
-def eliza_sorry(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_sorry')
+def smalltalk_sorry(w, subfacts, conclusions, context):
     return(make_answer([
         "There are many times when no apology is needed.",
         "What feelings do you have when you apologize?",
@@ -195,8 +195,8 @@ def eliza_sorry(w, subfacts, conclusions, context):
     ], subfacts, context))
 
 
-@chatbot.action('eliza_hello')
-def eliza_hello(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_hello')
+def smalltalk_hello(w, subfacts, conclusions, context):
     return(make_answer([
         "Hello... I'm glad you could drop by today.",
         "Hi there... how are you today?",
@@ -205,24 +205,24 @@ def eliza_hello(w, subfacts, conclusions, context):
         "Hi. What seems to be your problem?",
     ], subfacts, context))
 
-@chatbot.action('eliza_i_think')
-def eliza_i_think(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_i_think')
+def smalltalk_i_think(w, subfacts, conclusions, context):
     return(make_answer([
         "Do you doubt {X}?",
         "Do you really think so?",
         "But you're not sure {X}?",
     ], subfacts, context))
 
-@chatbot.action('eliza_friend')
-def eliza_friend(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_friend')
+def smalltalk_friend(w, subfacts, conclusions, context):
     return(make_answer([
         "Tell me more about your friends.",
         "When you think of a friend, what comes to mind?",
         "Why don't you tell me about a childhood friend?",
     ], subfacts, context))
 
-@chatbot.action('eliza_yes')
-def eliza_yes(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_yes')
+def smalltalk_yes(w, subfacts, conclusions, context):
     return(make_answer([
         "You seem quite sure.",
         "OK, but can you elaborate a bit?",
@@ -233,8 +233,8 @@ def eliza_yes(w, subfacts, conclusions, context):
         "I understand.",
     ], subfacts, context))
 
-@chatbot.action('eliza_computer')
-def eliza_computer(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_computer')
+def smalltalk_computer(w, subfacts, conclusions, context):
     return(make_answer([
         "Are you really talking about me?",
         "Does it seem strange to talk to a computer?",
@@ -248,8 +248,8 @@ def eliza_computer(w, subfacts, conclusions, context):
         "What do you think about machines?",
     ], subfacts, context))
 
-@chatbot.action('eliza_is_it')
-def eliza_is_it(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_is_it')
+def smalltalk_is_it(w, subfacts, conclusions, context):
     return(make_answer([
         "Do you think it is {X}?",
         "Perhaps it's {X} - what do you think?",
@@ -257,15 +257,15 @@ def eliza_is_it(w, subfacts, conclusions, context):
         "It could well be that {X}.",
     ], subfacts, context))
 
-@chatbot.action('eliza_it_is')
-def eliza_it_is(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_it_is')
+def smalltalk_it_is(w, subfacts, conclusions, context):
     return(make_answer([
         "You seem very certain.",
         "If I told you that it probably isn't {X}, what would you feel?",
     ], subfacts, context))
 
-@chatbot.action('eliza_can_you')
-def eliza_can_you(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_can_you')
+def smalltalk_can_you(w, subfacts, conclusions, context):
     return(make_answer([
         "What makes you think I can't {X}?",
         "If I could {X}, then what?",
@@ -275,8 +275,8 @@ def eliza_can_you(w, subfacts, conclusions, context):
         "Perhaps you would like to be able to {X} yourself.",
     ], subfacts, context))
 
-@chatbot.action('eliza_can_i')
-def eliza_can_i(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_can_i')
+def smalltalk_can_i(w, subfacts, conclusions, context):
     return(make_answer([
         "Perhaps you don't want to {X}.",
         "Do you want to be able to {X}?",
@@ -284,8 +284,8 @@ def eliza_can_i(w, subfacts, conclusions, context):
         "Whether or not you can {X} depends on you more than on me.",
     ], subfacts, context))
 
-@chatbot.action('eliza_you_are')
-def eliza_you_are(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_you_are')
+def smalltalk_you_are(w, subfacts, conclusions, context):
     return(make_answer([
         "Why do you think I am {X}?",
         "Does it please you to think that I'm {X}?",
@@ -300,8 +300,8 @@ def eliza_you_are(w, subfacts, conclusions, context):
         "Perhaps you would like to be {X}.",
     ], subfacts, context))
 
-@chatbot.action('eliza_i_dont')
-def eliza_i_dont(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_i_dont')
+def smalltalk_i_dont(w, subfacts, conclusions, context):
     return(make_answer([
         "Don't you really {X}?",
         "Why don't you {X}?",
@@ -310,8 +310,8 @@ def eliza_i_dont(w, subfacts, conclusions, context):
         "Does that trouble you?",
     ], subfacts, context))
 
-@chatbot.action('eliza_i_feel')
-def eliza_i_feel(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_i_feel')
+def smalltalk_i_feel(w, subfacts, conclusions, context):
     return(make_answer([
         "Good, tell me more about these feelings.",
         "Do you often feel {X}?",
@@ -322,55 +322,55 @@ def eliza_i_feel(w, subfacts, conclusions, context):
         "Of what does feeling {X} remind you?",
     ], subfacts, context))
 
-@chatbot.action('eliza_i_have')
-def eliza_i_have(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_i_have')
+def smalltalk_i_have(w, subfacts, conclusions, context):
     return(make_answer([
         "Why do you tell me that you've {X}?",
         "Have you really {X}?",
         "Now that you have {X}, what will you do next?",
     ], subfacts, context))
 
-@chatbot.action('eliza_i_would')
-def eliza_i_would(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_i_would')
+def smalltalk_i_would(w, subfacts, conclusions, context):
     return(make_answer([
         "Could you explain why you would {X}?",
         "Why would you {X}?",
         "Who else knows that you would {X}?",
     ], subfacts, context))
 
-@chatbot.action('eliza_is_there')
-def eliza_is_there(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_is_there')
+def smalltalk_is_there(w, subfacts, conclusions, context):
     return(make_answer([
         "Do you think there is {X}?",
         "It's likely that there is {X}.",
         "Would you like there to be {X}?",
     ], subfacts, context))
 
-@chatbot.action('eliza_my')
-def eliza_my(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_my')
+def smalltalk_my(w, subfacts, conclusions, context):
     return(make_answer([
         "I see, your {X}.",
         "Why do you say that your {X}?",
         "When your {X}, how do you feel?",
     ], subfacts, context))
 
-@chatbot.action('eliza_you')
-def eliza_you(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_you')
+def smalltalk_you(w, subfacts, conclusions, context):
     return(make_answer([
         "We should be discussing you, not me.",
         "Why do you say that about me?",
         "Why do you care whether I {X}?",
     ], subfacts, context))
 
-@chatbot.action('eliza_why')
-def eliza_why(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_why')
+def smalltalk_why(w, subfacts, conclusions, context):
     return(make_answer([
         "Why don't you tell me the reason why {X}?",
         "Why do you think {X}?",
     ], subfacts, context))
 
-@chatbot.action('eliza_i_want')
-def eliza_i_want(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_i_want')
+def smalltalk_i_want(w, subfacts, conclusions, context):
     return(make_answer([
         "What would it mean to you if you got {X}?",
         "Why do you want {X}?",
@@ -378,8 +378,8 @@ def eliza_i_want(w, subfacts, conclusions, context):
         "If you got {X}, then what would you do?",
     ], subfacts, context))
 
-@chatbot.action('eliza_mother')
-def eliza_mother(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_mother')
+def smalltalk_mother(w, subfacts, conclusions, context):
     return(make_answer([
         "Tell me more about your mother.",
         "What was your relationship with your mother like?",
@@ -388,8 +388,8 @@ def eliza_mother(w, subfacts, conclusions, context):
         "Good family relations are important.",
     ], subfacts, context))
 
-@chatbot.action('eliza_father')
-def eliza_father(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_father')
+def smalltalk_father(w, subfacts, conclusions, context):
     return(make_answer([
         "Tell me more about your father.",
         "How did your father make you feel?",
@@ -398,8 +398,8 @@ def eliza_father(w, subfacts, conclusions, context):
         "Do you have trouble showing affection with your family?",
     ], subfacts, context))
 
-@chatbot.action('eliza_child')
-def eliza_child(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_child')
+def smalltalk_child(w, subfacts, conclusions, context):
     return(make_answer([
         "Did you have close friends as a child?",
         "What is your favorite childhood memory?",
@@ -408,8 +408,8 @@ def eliza_child(w, subfacts, conclusions, context):
         "How do you think your childhood experiences relate to your feelings today?",
     ], subfacts, context))
 
-@chatbot.action('eliza_i_remember')
-def eliza_i_remember(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_i_remember')
+def smalltalk_i_remember(w, subfacts, conclusions, context):
     return(make_answer([
         "Do you often think of {X}?",
         "Does thinking of {X} bring anything else to mind?",
@@ -419,8 +419,8 @@ def eliza_i_remember(w, subfacts, conclusions, context):
         "What else does {X} remind you of?",
     ], subfacts, context))
 
-@chatbot.action('eliza_do_you_remember')
-def eliza_do_you_remember(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_do_you_remember')
+def smalltalk_do_you_remember(w, subfacts, conclusions, context):
     return(make_answer([
         "Did you think I would forget {X}?",
         "Why do you think I should recall {X} now?",
@@ -430,8 +430,8 @@ def eliza_do_you_remember(w, subfacts, conclusions, context):
         "What about {X} should I remember?",
     ], subfacts, context))
 
-@chatbot.action('eliza_i_forget')
-def eliza_i_forget(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_i_forget')
+def smalltalk_i_forget(w, subfacts, conclusions, context):
     return(make_answer([
         "Can you think of why you might forget {X}?",
         "Why can't you remember {X}?",
@@ -442,8 +442,8 @@ def eliza_i_forget(w, subfacts, conclusions, context):
         "Do you think you are suppressing {X}?",
     ], subfacts, context))
 
-@chatbot.action('eliza_did_you_forget')
-def eliza_did_you_forget(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_did_you_forget')
+def smalltalk_did_you_forget(w, subfacts, conclusions, context):
     return(make_answer([
         "Why do you ask?",
         "Are you sure you told me?",
@@ -452,8 +452,8 @@ def eliza_did_you_forget(w, subfacts, conclusions, context):
         "Tell me more about {X}.",
     ], subfacts, context))
 
-@chatbot.action('eliza_if')
-def eliza_if(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_if')
+def smalltalk_if(w, subfacts, conclusions, context):
     return(make_answer([
         "Do you think it's likely that {X}?",
         "Do you wish that {X}?",
@@ -464,8 +464,8 @@ def eliza_if(w, subfacts, conclusions, context):
         "What does this speculation lead to?",
     ], subfacts, context))
 
-@chatbot.action('eliza_perhaps')
-def eliza_perhaps(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_perhaps')
+def smalltalk_perhaps(w, subfacts, conclusions, context):
     return(make_answer([
         "You don't seem quite certain.",
         "Why the uncertain tone?",
@@ -475,8 +475,8 @@ def eliza_perhaps(w, subfacts, conclusions, context):
         "How likely, would you estimate?",
     ], subfacts, context))
 
-@chatbot.action('eliza_am_i')
-def eliza_am_i(w, subfacts, conclusions, context):
+@chatbot.action('smalltalk_am_i')
+def smalltalk_am_i(w, subfacts, conclusions, context):
     return(make_answer([
         "Do you believe you are {X}?",
         "Would you want to be {X}?",

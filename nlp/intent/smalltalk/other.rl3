@@ -1,0 +1,126 @@
+include "../../common.rl3"
+
+annotation
+    intent="smalltalk_base" [weight="0.001", X=x]
+search text
+    ^{x_at_end}
+if
+    true
+
+#=== MENTION ===
+
+annotation
+    intent="smalltalk_if" [weight="0.01", X=x]
+search text
+    \<if\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_yes" [weight="0.01"]
+search text
+    \<{yes}\>
+if
+    true
+
+annotation
+    intent="smalltalk_perhaps" [weight="0.01", X=x]
+search text
+    \<perhaps\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_because" [weight="0.01", X=x]
+search text
+    \<{because}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_sorry" [weight="0.01"]
+search text
+    \<{sorry}\>
+if
+    true
+
+annotation
+    intent="smalltalk_hello" [weight="0.01"]
+search text
+    \<{hello}\>
+if
+    true
+
+annotation
+    intent="smalltalk_friend" [weight="0.01"]
+search text
+    \s{friend}\s
+if
+    true
+
+annotation
+    intent="smalltalk_computer" [weight="0.01"]
+search text
+    \<computers?\>
+if
+    true
+
+annotation
+    intent="smalltalk_mother" [weight="0.01"]
+search text
+    \<{mother}\>
+if
+    true
+
+annotation
+    intent="smalltalk_father" [weight="0.01"]
+search text
+    \<{father}\>
+if
+    true
+
+annotation
+    intent="smalltalk_child" [weight="0.01"]
+search text
+    \<child
+if
+    true
+
+#=== AFFIRMATION ===
+
+annotation
+    intent="smalltalk_it_is" [weight="0.01", X=x]
+search text
+    \<{it_is}\s{x_at_end}
+if
+    true
+
+#=== QUESTION ===
+
+annotation
+    intent="smalltalk_base_question" [weight="0.01"]
+search text
+    (\<{base_question}\s|\?)
+if
+    true
+
+annotation
+    intent="smalltalk_why" [weight="0.01", X=x]
+search text
+    \<{why}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_is_it" [weight="0.01", X=x]
+search text
+    \<{is_it}\s{x_at_end}
+if
+    true
+
+annotation
+    intent="smalltalk_is_there" [weight="0.01", X=x]
+search text
+    \<{is_there}\s{x_at_end}
+if
+    true
