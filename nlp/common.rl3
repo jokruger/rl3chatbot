@@ -71,3 +71,6 @@ pattern it_is [icase] [inline]
 
 pattern rude_word [icase] [inline]
     (fuck|fucker|shit|damn|shut up|bitch|go hell|go to hell)
+
+pattern what_is [icase] [inline]
+    (what is|who is|define|What do you know about|What can you tell about|Can you tell me about|Tell me about|Can I get information on what is|Can you give me information about|Can I get to know what is|I need information on|I want to get to know about|i need to know what is|Can you give the definition of|Can you define what is|Can you describe what is|Don't understand what is)

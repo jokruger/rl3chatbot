@@ -12,7 +12,7 @@ class WikipediaActions():
     def wikipedia_summary(self, w, subfacts, conclusions, context):
         for i in subfacts.get_facts('query'):
             try:
-                t = wikipedia.summary(i.get_value(), sentences=1)
+                t = wikipedia.summary(i.get_value(), sentences=2)
                 if t and len(t) > 50:
                     return Answer(message=t)
             except:
