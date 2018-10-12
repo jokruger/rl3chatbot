@@ -1,5 +1,5 @@
 # rl3chatbot
-A chatbot framework and chatbot example implemented with RL3 and Python
+A chatbot framework and chatbot example (including console and web apps) implemented with RL3 and Python
 
 The idea is to implement a small-talk bot logic as a core, and then build a specialized bot on top of it. Intent detection and NER are implemented in RL3. Answer generation logic is
 implemented in Python 3, and is based on intents and entities detected during Intent/NER phase.
