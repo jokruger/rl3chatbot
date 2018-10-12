@@ -19,5 +19,7 @@ For more details on RL3 refer to https://rl3.zorallabs.com/wiki/Main_Page
 
 * RL3
 * python 3
-* flask
-* flask-compress
+* flask (pip3 install flask)
+* flask-compress (pip3 install flask-compress)
+* wikipedia (pip3 install wikipedia)
+* lxml (pip3 install lxml)
