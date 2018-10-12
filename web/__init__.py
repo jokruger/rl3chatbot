@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import json, uuid, logging, fcntl
+import json, uuid, logging, fcntl, bot
 from logging import Formatter, FileHandler
 from datetime import timedelta
 from flask import Flask, request, session, render_template, jsonify
 from flask_compress import Compress
 from werkzeug.contrib.fixers import ProxyFix
-from bot import chatbot, chatbot_name
+
+chatbot = bot.DefaultChatbot()
 
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
@@ -44,7 +45,7 @@ def after_request(response):
 def view_index():
     sid = init_sid(reset=True)
 
-    return render_template('page_index.html', debug_mode=app.config['DEBUG'], page='index', name=chatbot_name)
+    return render_template('page_index.html', debug_mode=app.config['DEBUG'], page='index', name=chatbot.get_name())
 
 @app.route('/chat', methods=['POST'])
 def view_chat():

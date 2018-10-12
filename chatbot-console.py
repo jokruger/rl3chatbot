@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-from bot import chatbot
+import bot
+
+chatbot = bot.DefaultChatbot()
 
 print('Bot: Hello!\n')
 user_input = ''

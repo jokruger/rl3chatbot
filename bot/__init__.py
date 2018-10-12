@@ -1,24 +1,18 @@
 # -*- coding: utf-8 -*-
 
 import os, sys, random, rl3
-
-class Answer():
-    def __init__(self, message=None, stop=False):
-        self.message = message
-        self.stop = stop
+from bot.answer import Answer
+from bot.base import BaseActions
+from bot.smalltalk import SmallTalkActions
 
 class Chatbot():
-    def __init__(self):
-        self.actions = dict()
+    def __init__(self, name, model_path):
+        self.name = name
+        self.engine = rl3.RL3Engine()
+        self.engine.load(model_path)
 
-        self.intent_engine = rl3.RL3Engine()
-        self.intent_engine.load('./intent.rl3c')
-
-    def action(self, intent_name):
-        def decorator(f):
-            self.actions[intent_name] = f
-            return f
-        return decorator
+    def get_name(self):
+        return self.name
 
     def get_intents(self, fs):
         groups = dict()
@@ -36,14 +30,15 @@ class Chatbot():
 
     def process(self, user_input, context):
         try:
-            facts = self.intent_engine.create_factsheet_from_json(context) if context else self.intent_engine.create_factsheet()
-            conclusions = self.intent_engine.create_factsheet()
+            facts = self.engine.create_factsheet_from_json(context) if context else self.engine.create_factsheet()
+            conclusions = self.engine.create_factsheet()
             facts.retract_facts('text')
             facts.assert_simple_fact('text', user_input)
-            self.intent_engine.run(facts, conclusions)
+            self.engine.run(facts, conclusions)
             for name, weight, subfacts in self.get_intents(conclusions):
-                if name in self.actions:
-                    answer = self.actions[name](weight, subfacts, conclusions, facts)
+                action = getattr(self, name, None)
+                if action is not None:
+                    answer = action(weight, subfacts, conclusions, facts)
                     if answer:
                         facts.retract_facts('prior_intent')
                         facts.assert_simple_fact('prior_intent', name)
@@ -53,7 +48,8 @@ class Chatbot():
 
         return (Answer(message='ouch...'), context)
 
-chatbot_name = 'RL3ChatBot'
-chatbot = Chatbot()
-
-from bot import actions_general, actions_smalltalk
+class DefaultChatbot(Chatbot, BaseActions, SmallTalkActions):
+    def __init__(self):
+        Chatbot.__init__(self, 'RL3Bot', './intent.rl3c')
+        BaseActions.__init__(self)
+        SmallTalkActions.__init__(self)
