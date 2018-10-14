@@ -4,7 +4,7 @@ A chatbot framework and chatbot example (including console and web apps) impleme
 The idea is to implement a small-talk bot logic as a core, and then build a specialized bot on top of it. Intent detection and NER are implemented in RL3. Answer generation logic is
 implemented in Python 3, and is based on intents and entities detected during Intent/NER phase.
 
-Core of the small-talk logic is based on Elize bot ideas.
+Core of the small-talk logic is based on Eliza bot ideas.
 
 Online demo https://chatbot.bdp.zorallabs.com
 
