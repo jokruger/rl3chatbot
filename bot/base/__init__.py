@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import random, re
-from bot.answer import Answer
+from bot.core import Answer
 
 def substitute(text, factsheet):
     t = text

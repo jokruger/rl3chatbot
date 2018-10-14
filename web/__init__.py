@@ -53,6 +53,7 @@ def view_chat():
 
     message = request.form.get('message', '')
     context = request.form.get('context', '')
+    options = None
 
     log_message(request.remote_addr, sid, 'USR: ' + message)
 
@@ -60,6 +61,7 @@ def view_chat():
         answer, context = chatbot.process(message, context)
         if answer:
             message = answer.message
+            options = [{'title': i.title, 'body': i.body} for i in answer.options] if answer.options else None
         else:
             message = 'ouch...'
     except Exception as e:
@@ -68,4 +70,4 @@ def view_chat():
 
     log_message(request.remote_addr, sid, 'BOT: ' + message)
 
-    return jsonify(message=message, context=context)
+    return jsonify(message=message, options=options, context=context)

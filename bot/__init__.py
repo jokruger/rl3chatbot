@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os, sys, random, rl3
-from bot.answer import Answer
+from bot.core import Option, Answer
 from bot.base import BaseActions
 from bot.wikipedia import WikipediaActions
 from bot.smalltalk import SmallTalkActions

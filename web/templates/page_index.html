@@ -11,7 +11,6 @@
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/jquery.cookie.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
 </head>
 <body>
     <div class="container">
@@ -40,8 +39,21 @@
     <script type=text/javascript>
         $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 
-        function tell_bot(message) {
-            $("#chat").append('<li class="media"><div class="media-left"><img class="media-object img-circle" src="/static/img/bot.png" style="width: 45px;" alt="bot"></div><div class="media-body"><h4 class="media-heading" style="font-size: 12px;">{{ name }}</h4><span class="text-success">' + message + '</span></div></li>');
+        function do_option(message) {
+            $('#btn-input').val(message);
+            send_message();
+        }
+
+        function tell_bot(message, options) {
+            html = '<li class="media"><div class="media-left"><img class="media-object img-circle" src="/static/img/bot.png" style="width: 45px;" alt="bot"></div><div class="media-body"><h4 class="media-heading" style="font-size: 12px;">{{ name }}</h4><div class="text-success">' + message + '</div>';
+            if (options) {
+                for (i in options) {
+                    html += '<a href="#" onclick="do_option(\'' + options[i].body.replace(/"/g, '\'').replace(/(?:\r\n|\r|\n)/g, ' ') + '\'); return false;">' + options[i].title + '</a><br>';
+                }
+                html += '<div class="text-muted">(click any item above)</div>';
+            }
+            html += '</div></li>';
+            $("#chat").append(html);
             $("#chat-panel").scrollTop($("#chat-panel")[0].scrollHeight);
         }
 
@@ -62,13 +74,13 @@
                 context = result.context;
                 setTimeout( function() {
                     $('#typing').remove();
-                    tell_bot(result.message);
+                    tell_bot(result.message, result.options);
                 }, 1000);
             });
         }
 
         $(function() {
-            tell_bot('Hello!');
+            tell_bot('Hello!', null);
             $('.trythis').css('text-decoration', 'underline').click(function() {
                 $('#btn-input').val($(this).text());
                 $('#btn-chat').click();
