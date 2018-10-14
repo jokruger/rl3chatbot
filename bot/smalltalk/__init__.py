@@ -3,60 +3,62 @@
 import random, re
 from bot.answer import Answer
 
+reflections = {
+    "i": "you",
+    "am": "are",
+    "i'm": "you are",
+    "im": "you are",
+    "was": "were",
+    "i'd": "you would",
+    "i've": "you have",
+    "i'll": "you will",
+    "my": "your",
+    "are": "am",
+    "you've": "I have",
+    "you'll": "I will",
+    "your": "my",
+    "yours": "mine",
+    "you": "me",
+    "me": "you",
+}
+
+def reflect(token):
+    t = token.lower()
+    if t in reflections:
+        return reflections[t]
+    return token
+
+def substitute(text, factsheet, apply_reflection):
+    t = text
+    if factsheet is not None and len(factsheet) > 0:
+        for i in factsheet.get_facts():
+            v = i.get_value()
+            if apply_reflection:
+                v = v.replace('!', ' ').replace('?', ' ').strip()
+                v = ' '.join([reflect(j) for j in v.split(' ')])
+            t = t.replace('{%s}' % i.get_label(), v)
+    return t
+
+def make_answer(templates, subfacts, context):
+    random.shuffle(templates)
+    for i in templates:
+        try:
+            t = i
+            t = substitute(t, subfacts, True)
+            t = substitute(t, context, False)
+            if re.search(r"{[a-zA-Z0-9_\-]+}", t) is None:
+                return Answer(message=t)
+        except:
+            pass
+
+    return None
+
 class SmallTalkActions():
     def __init__(self):
-        self._reflections = {
-            "i": "you",
-            "am": "are",
-            "i'm": "you are",
-            "im": "you are",
-            "was": "were",
-            "i'd": "you would",
-            "i've": "you have",
-            "i'll": "you will",
-            "my": "your",
-            "are": "am",
-            "you've": "I have",
-            "you'll": "I will",
-            "your": "my",
-            "yours": "mine",
-            "you": "me",
-            "me": "you",
-        }
-
-    def _reflect(self, token):
-        t = token.lower()
-        if t in self._reflections:
-            return self._reflections[t]
-        return token
-
-    def _substitute(self, text, factsheet, apply_reflection):
-        t = text
-        if factsheet is not None and len(factsheet) > 0:
-            for i in factsheet.get_facts():
-                v = i.get_value()
-                if apply_reflection:
-                    v = v.replace('!', ' ').replace('?', ' ').strip()
-                    v = ' '.join([self._reflect(j) for j in v.split(' ')])
-                t = t.replace('{%s}' % i.get_label(), v)
-        return t
-
-    def _make_answer(self, templates, subfacts, context):
-        random.shuffle(templates)
-        for i in templates:
-            try:
-                t = i
-                t = self._substitute(t, subfacts, True)
-                t = self._substitute(t, context, False)
-                if re.search(r"{[a-zA-Z0-9_\-]+}", t) is None:
-                    return Answer(message=t)
-            except:
-                pass
-
-        return None
+        pass
 
     def smalltalk_base(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Please tell me more.",
             "Let's change focus a bit... Tell me about your family.",
             "Can you elaborate on that?",
@@ -76,7 +78,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_base_question(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Why do you ask?",
             "Why do you ask that?",
             "How would an answer to that help you?",
@@ -97,7 +99,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_need(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Why do you want {X}?",
             "Would it really help you to get {X}?",
             "Are you sure you need {X}?",
@@ -111,7 +113,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_why_dont_you(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Do you really think I don't {X}?",
             "Perhaps eventually I will {X}.",
             "Do you really want me to {X}?",
@@ -122,7 +124,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_why_cant_i(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Do you think you should be able to {X}?",
             "If you could {X}, what would you do?",
             "I don't know - why can't you {X}?",
@@ -133,7 +135,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_cant(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "How do you know you can't {X}?",
             "Perhaps you could {X} if you tried.",
             "What would it take for you to {X}?",
@@ -145,7 +147,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_am(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Did you come to me because you are {X}?",
             "How long have you been {X}?",
             "How do you feel about being {X}?",
@@ -159,7 +161,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_are_you(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Why does it matter whether I am {X}?",
             "Would you prefer it if I were not {X}?",
             "Perhaps you believe I am {X}.",
@@ -173,7 +175,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_because(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Is that the real reason?",
             "What other reasons come to mind?",
             "Does that reason apply to anything else?",
@@ -184,7 +186,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_sorry(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "There are many times when no apology is needed.",
             "What feelings do you have when you apologize?",
             "Please don't apologize.",
@@ -193,7 +195,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_hello(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Hello... I'm glad you could drop by today.",
             "Hi there... how are you today?",
             "Hello, how are you feeling today?",
@@ -202,7 +204,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_think(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Do you doubt {X}?",
             "Do you really think so?",
             "But you're not sure {X}?",
@@ -211,14 +213,14 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_friend(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Tell me more about your friends.",
             "When you think of a friend, what comes to mind?",
             "Why don't you tell me about a childhood friend?",
         ], subfacts, context))
 
     def smalltalk_yes(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "You seem quite sure.",
             "OK, but can you elaborate a bit?",
             "Please go on.",
@@ -229,7 +231,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_no(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Are you saying no just to be negative?",
             "Does this make you feel unhappy?",
             "Why not?",
@@ -237,7 +239,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_computer(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Are you really talking about me?",
             "Does it seem strange to talk to a computer?",
             "How do computers make you feel?",
@@ -251,7 +253,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_is_it(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Do you think it is {X}?",
             "Perhaps it's {X} - what do you think?",
             "If it were {X}, what would you do?",
@@ -259,13 +261,13 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_it_is(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "You seem very certain.",
             "If I told you that it probably isn't {X}, what would you feel?",
         ], subfacts, context))
 
     def smalltalk_can_you(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "What makes you think I can't {X}?",
             "If I could {X}, then what?",
             "Why do you ask if I can {X}?",
@@ -275,7 +277,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_can_i(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Perhaps you don't want to {X}.",
             "Do you want to be able to {X}?",
             "If you could {X}, would you?",
@@ -283,7 +285,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_you_are(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Why do you think I am {X}?",
             "Does it please you to think that I'm {X}?",
             "Perhaps you would like me to be {X}.",
@@ -298,7 +300,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_dont(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Don't you really {X}?",
             "Why don't you {X}?",
             "Do you want to {X}?",
@@ -307,7 +309,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_feel(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Good, tell me more about these feelings.",
             "Do you often feel {X}?",
             "When do you usually feel {X}?",
@@ -318,41 +320,41 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_have(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Why do you tell me that you've {X}?",
             "Have you really {X}?",
             "Now that you have {X}, what will you do next?",
         ], subfacts, context))
 
     def smalltalk_i_would(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Could you explain why you would {X}?",
             "Why would you {X}?",
             "Who else knows that you would {X}?",
         ], subfacts, context))
 
     def smalltalk_is_there(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Do you think there is {X}?",
             "It's likely that there is {X}.",
             "Would you like there to be {X}?",
         ], subfacts, context))
 
     def smalltalk_my(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "I see, your {X}.",
             "Why do you say that your {X}?",
             "When your {X}, how do you feel?",
         ], subfacts, context))
 
     def smalltalk_my_relative(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Tell me more about your family.",
             "Who else in your family {X}?",
         ], subfacts, context))
 
     def smalltalk_you(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "We should be discussing you, not me.",
             "Why do you say that about me?",
             "Why do you care whether I {X}?",
@@ -363,13 +365,13 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_why(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Why don't you tell me the reason why {X}?",
             "Why do you think {X}?",
         ], subfacts, context))
 
     def smalltalk_mother(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Tell me more about your mother.",
             "What was your relationship with your mother like?",
             "How do you feel about your mother?",
@@ -378,7 +380,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_father(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Tell me more about your father.",
             "How did your father make you feel?",
             "How do you feel about your father?",
@@ -387,7 +389,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_child(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Did you have close friends as a child?",
             "What is your favorite childhood memory?",
             "Do you remember any dreams or nightmares from childhood?",
@@ -396,7 +398,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_remember(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Do you often think of {X}?",
             "Does thinking of {X} bring anything else to mind?",
             "Why do you remember {X} just now?",
@@ -406,7 +408,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_do_you_remember(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Did you think I would forget {X}?",
             "Why do you think I should recall {X} now?",
             "What about {X}?",
@@ -416,7 +418,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_forget(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Can you think of why you might forget {X}?",
             "Why can't you remember {X}?",
             "How often do you think of {X}?",
@@ -427,7 +429,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_did_you_forget(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Why do you ask?",
             "Are you sure you told me?",
             "Would it bother you if I forgot {X}?",
@@ -436,7 +438,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_if(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Do you think it's likely that {X}?",
             "Do you wish that {X}?",
             "What do you know about {X}?",
@@ -447,7 +449,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_perhaps(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "You don't seem quite certain.",
             "Why the uncertain tone?",
             "Can't you be more positive?",
@@ -457,7 +459,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_am_i(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Do you believe you are {X}?",
             "Would you want to be {X}?",
             "Do you wish I would tell you you are {X}?",
@@ -465,7 +467,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_dreamed(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Really, {X}?",
             "Have you ever fantasized {X} while you were awake?",
             "Have you ever dreamed {X} before?",
@@ -476,7 +478,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_are(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Did you think they might not be {X}?",
             "Would you like it if they were not {X}?",
             "What if they were not {X}?",
@@ -485,7 +487,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_your(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Why are you concerned over my {X}?",
             "What about your own {X}?",
             "Are you worried about someone else's {X}?",
@@ -495,7 +497,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_was_i(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "What if you were {X}?",
             "Do you think you were {X}?",
             "Were you {X}?",
@@ -504,14 +506,14 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_was(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Were you really?",
             "Why do you tell me you were {X} now?",
             "Perhaps I already know you were {X}.",
         ], subfacts, context))
 
     def smalltalk_was_you(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Would you like to believe I was {X}?",
             "What suggests that I was {X}?",
             "What do you think?",
@@ -520,7 +522,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_am_negative(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "I am sorry to hear that you are {X}.",
             "Do you think coming here will help you not to be {X}?",
             "I'm sure it's not pleasant to be {X}.",
@@ -528,7 +530,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_am_positive(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "How have I helped you to be {X}?",
             "Has your treatment made you {X}?",
             "What makes you {X} just now?",
@@ -536,7 +538,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_i_x_you(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Perhaps in your fantasies we {X} each other.",
             "Do you wish to {X} me?",
             "You seem to need to {X} me.",
@@ -544,7 +546,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_you_x_me(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Why do you think I {X} you?",
             "You like to think I {X} you - don't you?",
             "What makes you think I {X} you?",
@@ -555,7 +557,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_no_one(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Are you sure, no one {X}?",
             "Surely someone {X}.",
             "Can you think of anyone at all?",
@@ -566,7 +568,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_everyone(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Really, everyone?",
             "Surely not everyone.",
             "Can you think of anyone in particular?",
@@ -579,7 +581,7 @@ class SmallTalkActions():
         ], subfacts, context))
 
     def smalltalk_rude_word(self, w, subfacts, conclusions, context):
-        return(self._make_answer([
+        return(make_answer([
             "Does it make you feel strong to use that kind of language?",
             "Are you venting your feelings now?",
             "Are you angry?",

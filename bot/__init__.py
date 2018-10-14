@@ -32,9 +32,16 @@ class Chatbot():
     def process(self, user_input, context):
         try:
             facts = self.engine.create_factsheet_from_json(context) if context else self.engine.create_factsheet()
-            conclusions = self.engine.create_factsheet()
+
+            # reset 'bot name' fact
+            facts.retract_facts('bot_name')
+            facts.assert_simple_fact('bot_name', self.get_name())
+
+            # reset 'user input' fact
             facts.retract_facts('text')
             facts.assert_simple_fact('text', user_input)
+
+            conclusions = self.engine.create_factsheet()
             self.engine.run(facts, conclusions)
             for name, weight, subfacts in self.get_intents(conclusions):
                 action = getattr(self, name, None)

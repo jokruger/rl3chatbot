@@ -1,0 +1,29 @@
+include "../common.rl3"
+
+annotation
+    intent="goodbye" [weight="1"]
+search text
+    ^({goodbye}|stop|quit)$
+if
+    true
+
+annotation
+    intent="bot_name" [weight="1"]
+search text
+    ^(?i:{ref last bot_name})\s*[!\.\?]?$
+if
+    true
+
+annotation
+    intent="who_are_you" [weight="1"]
+search text
+    \<(?i:{who_are_you}){eos}
+if
+    true
+
+annotation
+    intent="what_is_your_name" [weight="1"]
+search text
+    \<(?i:{what_is_your_name}){eos}
+if
+    true

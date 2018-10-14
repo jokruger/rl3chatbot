@@ -43,7 +43,7 @@ pattern friend [icase] [inline]
     (friend|buddy|comrade)
 
 pattern yes [icase] [inline]
-    (y+e+s+|yeah|yep|yup)
+    (y+e+s+|yeah|yep|yup|absolutely)
 
 pattern no [icase] [inline]
     (n+o+|nope|nah)
@@ -74,3 +74,9 @@ pattern rude_word [icase] [inline]
 
 pattern what_is [icase] [inline]
     (what is|who is|define|What do you know about|What can you tell about|Can you tell me about|Tell me about|Can I get information on what is|Can you give me information about|Can I get to know what is|I need information on|I want to get to know about|i need to know what is|Can you give the definition of|Can you define what is|Can you describe what is|Don't understand what is)
+
+pattern who_are_you [icase] [inline]
+    (who are you|tell me about yourself|tell me more about yourself|tell me about you|what is you)
+
+pattern what_is_your_name [icase] [inline]
+    (what is your name)

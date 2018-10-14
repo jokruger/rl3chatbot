@@ -2,7 +2,7 @@
 
 import json, uuid, logging, fcntl, bot
 from logging import Formatter, FileHandler
-from datetime import timedelta
+from datetime import timedelta, datetime
 from flask import Flask, request, session, render_template, jsonify
 from flask_compress import Compress
 from werkzeug.contrib.fixers import ProxyFix
@@ -22,7 +22,7 @@ app.logger.addHandler(file_handler)
 def log_message(ip, sid, msg):
     with open('dialogs', 'a') as f:
         fcntl.flock(f, fcntl.LOCK_EX)
-        f.write('%s %s %s\n' % (str(ip), str(sid), msg))
+        f.write('%s, %s, %s, %s\n' % (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), str(ip), str(sid), msg))
         fcntl.flock(f, fcntl.LOCK_UN)
 
 def init_sid(reset=False):

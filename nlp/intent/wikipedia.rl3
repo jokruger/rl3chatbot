@@ -1,7 +1,7 @@
 include "../common.rl3"
 
 annotation
-    intent="wikipedia_summary" [weight="1", query=x]
+    intent="wikipedia_summary" [weight="0.1", query=x]
 search text
     \<(?i:{what_is})\s{x_at_end}
 if
