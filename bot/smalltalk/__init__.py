@@ -13,11 +13,13 @@ reflections = {
     "i've": "you have",
     "i'll": "you will",
     "my": "your",
+    "myself": "yourself",
     "are": "am",
     "you've": "I have",
     "you'll": "I will",
     "your": "my",
     "yours": "mine",
+    "yourself": "myself",
     "you": "me",
     "me": "you",
 }
@@ -75,6 +77,8 @@ class SmallTalkActions():
             "That is interesting. Please continue.",
             "Tell me more about that.",
             "Does talking about this bother you?",
+            "What does that suggest to you?",
+            "Do you feel strongly about discussing such things?",
         ], subfacts, context))
 
     def smalltalk_base_question(self, w, subfacts, conclusions, context):
@@ -167,6 +171,7 @@ class SmallTalkActions():
             "Perhaps you believe I am {X}.",
             "I may be {X} - what do you think?",
             "Are you interested in whether I am {X} or not?",
+            "Why are you interested in whether I am {X} or not?",
             "Would you prefer if I weren't {X}?",
             "Perhaps I am {X} in your fantasies.",
             "Do you sometimes think I am {X}?",
@@ -405,6 +410,7 @@ class SmallTalkActions():
             "What in the present situation reminds you of {X}?",
             "What is the connection between me and {X}?",
             "What else does {X} remind you of?",
+            "What else do you recollect?",
         ], subfacts, context))
 
     def smalltalk_do_you_remember(self, w, subfacts, conclusions, context):
@@ -588,4 +594,15 @@ class SmallTalkActions():
             "Does this topic make you feel angry?",
             "Is something making you feel angry?",
             "Does using that kind of language make you feel better?",
+        ], subfacts, context))
+
+    def smalltalk_different(self, w, subfacts, conclusions, context):
+        return(make_answer([
+            "How is it different?",
+            "What differences do you see?",
+            "What does that difference suggest to you?",
+            "What other distinctions do you see?",
+            "What do you suppose that disparity means?",
+            "Could there be some connection, do you suppose?",
+            "How?",
         ], subfacts, context))

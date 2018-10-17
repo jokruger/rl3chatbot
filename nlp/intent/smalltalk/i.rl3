@@ -5,105 +5,105 @@ include "../../common.rl3"
 annotation
     intent="smalltalk_i_x_you" [weight="0.01", X=x]
 search text
-    \<(?i:{i}\s{x=[^!\.\?]+}\syou)\>
+    \<{I} {x=[^!\.\?]+} {YOU}\>
 if
     true
 
 annotation
     intent="smalltalk_i_am" [weight="0.01", X=x]
 search text
-    \<(?i:{i_am})(\s{x_at_end}|\>)
+    \<{I_AM}(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_i_am_negative" [weight="0.01", X=x]
 search text
-    \<(?i:({i}(\sfeel(ing)?)?)\s{x=(sad|unhappy|not\shappy|mad|angry|pissed(\soff)?|depressed|annoyed)(\s[^!\.\?]+)?}){eos}
+    \<(?i:({I}(\sfeel(ing)?)?)\s{x=(sad|unhappy|not\shappy|mad|angry|pissed(\soff)?|depressed|annoyed)(\s[^!\.\?]+)?}){EOS}
 if
     true
 
 annotation
     intent="smalltalk_i_am_positive" [weight="0.01", X=x]
 search text
-    \<(?i:({i}(\sfeel(ing)?)?)\s{x=(happy|excited|glad)(\s[^!\.\?]+)?}){eos}
+    \<(?i:({I}(\sfeel(ing)?)?)\s{x=(happy|excited|glad)(\s[^!\.\?]+)?}){EOS}
 if
     true
 
 annotation
     intent="smalltalk_i_was" [weight="0.01", X=x]
 search text
-    \<(?i:{i} was)(\s{x_at_end}|\>)
+    \<{I} {WAS}(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_i_need" [weight="0.01", X=x]
 search text
-    \<(?i:{i} (desire|want|need))(\s{x_at_end}|\>)
+    \<{I} {DESIRE}(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_i_think" [weight="0.01", X=x]
 search text
-    \<(?i:{i} (think|believe))(\s{x_at_end}|\>)
+    \<{I} {BELIEF}(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_i_feel" [weight="0.01", X=x]
 search text
-    \<(?i:{i} feel)(\s{x_at_end}|\>)
+    \<(?i:{I} feel)(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_i_dreamed" [weight="0.01", X=x]
 search text
-    \<(?i:{i} dreamed)(\s{x_at_end}|\>)
+    \<(?i:{I} (dreamed|dreamt))(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_i_forget" [weight="0.01", X=x]
 search text
-    \<(?i:{i} forget)(\s{x_at_end}|\>)
+    \<(?i:{I} forget)(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_i_remember" [weight="0.01", X=x]
 search text
-    \<(?i:{i} remember)(\s{x_at_end}|\>)
+    \<{I} {REMEMBER}(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_i_have" [weight="0.01", X=x]
 search text
-    \<(?i:{i} have)(\s{x_at_end}|\>)
+    \<(?i:{I} have)(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_i_would" [weight="0.01", X=x]
 search text
-    \<(?i:{i} would)(\s{x_at_end}|\>)
+    \<(?i:{I} would)(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_i_cant" [weight="0.01", X=x]
 search text
-    \<(?i:{i} {cannot})(\s{x_at_end}|\>)
+    \<{I} {CANT}(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_i_dont" [weight="0.01", X=x]
 search text
-    \<(?i:{i} {dont})(\s{x_at_end}|\>)
+    \<{I} {DONT}(\s{x_at_end}|\>)
 if
     true
 
@@ -112,27 +112,27 @@ if
 annotation
     intent="smalltalk_why_cant_i" [weight="0.01", X=x]
 search text
-    \<(?i:why {cannot} {i})(\s{x_at_end}|\>)
+    \<(?i:why {CANT} {I})(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_can_i" [weight="0.01", X=x]
 search text
-    \<(?i:can {i})(\s{x_at_end}|\>)
+    \<(?i:can {I})(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_am_i" [weight="0.01", X=x]
 search text
-    \<(?i:{am_i})(\s{x_at_end}|\>)
+    \<{AM_I}(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_was_i" [weight="0.01", X=x]
 search text
-    \<(?i:was {i})(\s{x_at_end}|\>)
+    \<{WAS} {I}(\s{x_at_end}|\>)
 if
     true

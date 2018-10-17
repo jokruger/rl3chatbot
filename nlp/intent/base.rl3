@@ -3,7 +3,7 @@ include "../common.rl3"
 annotation
     intent="goodbye" [weight="1"]
 search text
-    ^({goodbye}|stop|quit)$
+    ^({GOODBYE}|stop|quit|done|exit)$
 if
     true
 
@@ -17,13 +17,27 @@ if
 annotation
     intent="who_are_you" [weight="1"]
 search text
-    \<(?i:{who_are_you}){eos}
+    \<({WHO_ARE_YOU}|{WHAT_IS} (?i:rl3\s?chat\s?bot|rl3\s?bot)){EOS}
 if
     true
 
 annotation
     intent="what_is_your_name" [weight="1"]
 search text
-    \<(?i:{what_is_your_name}){eos}
+    \<{WHAT_IS_YOUR_NAME}{EOS}
+if
+    true
+
+annotation
+    intent="what_is_rl3" [weight="0.9"]
+search text
+    \<{WHAT_IS} (?i:rl3){EOS}
+if
+    true
+
+annotation
+    intent="what_you_can_do" [weight="1"]
+search text
+    \<(?i:(what you can do|what can you do|what can i ask you|what you know|what are your features|what things you can do)){EOS}
 if
     true

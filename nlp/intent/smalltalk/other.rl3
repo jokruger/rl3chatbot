@@ -26,14 +26,14 @@ if
 annotation
     intent="smalltalk_yes" [weight="0.01"]
 search text
-    \<(?i:{yes})\>
+    \<{YES}\>
 if
     true
 
 annotation
     intent="smalltalk_no" [weight="0.01"]
 search text
-    (\<(?i:(nope|nah))\>|^(?i:n+o+){eos})
+    (\<(?i:(nope|nah))\>|^(?i:n+o+){EOS})
 if
     true
 
@@ -54,42 +54,42 @@ if
 annotation
     intent="smalltalk_sorry" [weight="0.01"]
 search text
-    \<(?i:{sorry})\>
+    \<{SORRY}\>
 if
     true
 
 annotation
     intent="smalltalk_hello" [weight="0.01"]
 search text
-    \<(?i:{hello})\>
+    \<{HELLO}\>
 if
     true
 
 annotation
     intent="smalltalk_friend" [weight="0.01"]
 search text
-    \<{friend}\>
+    \<{FRIEND}\>
 if
     true
 
 annotation
     intent="smalltalk_computer" [weight="0.01"]
 search text
-    \<(?i:computers?)\>
+    \<(?i:computer)
 if
     true
 
 annotation
     intent="smalltalk_mother" [weight="0.01"]
 search text
-    \<(?i:{mother})\>
+    \<{MOTHER}\>
 if
     true
 
 annotation
     intent="smalltalk_father" [weight="0.01"]
 search text
-    \<(?i:{father})\>
+    \<{FATHER}\>
 if
     true
 
@@ -103,21 +103,28 @@ if
 annotation
     intent="smalltalk_no_one" [weight="0.01", X=x]
 search text
-    \<(?i:no one)(\s{x_at_end}|\>)
+    \<{NOBODY}(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_everyone" [weight="0.01", X=x]
 search text
-    \<(?i:everyone)(\s{x_at_end}|\>)
+    \<{EVERYBODY}(\s{x_at_end}|\>)
 if
     true
 
 annotation
-    intent="smalltalk_rude_word" [weight="0.01", X=x]
+    intent="smalltalk_rude_word" [weight="0.01"]
 search text
-    \<(?i:{rude_word})\>
+    \<{RUDE_WORD}\>
+if
+    true
+
+annotation
+    intent="smalltalk_different" [weight="0.01"]
+search text
+    \<(?i:different)\>
 if
     true
 
@@ -126,7 +133,7 @@ if
 annotation
     intent="smalltalk_it_is" [weight="0.01", X=x]
 search text
-    \<(?i:{it_is})(\s{x_at_end}|\>)
+    \<{IT_IS}(\s{x_at_end}|\>)
 if
     true
 
@@ -135,7 +142,7 @@ if
 annotation
     intent="smalltalk_base_question" [weight="0.01"]
 search text
-    (\<(?i:{base_question})\s|\?)
+    (\<{BASE_QUESTION}\s|\?)
 if
     true
 
@@ -149,13 +156,13 @@ if
 annotation
     intent="smalltalk_is_it" [weight="0.01", X=x]
 search text
-    \<(?i:{is_it})(\s{x_at_end}|\>)
+    \<{IS_IT}(\s{x_at_end}|\>)
 if
     true
 
 annotation
     intent="smalltalk_is_there" [weight="0.01", X=x]
 search text
-    \<(?i:{is_there})(\s{x_at_end}|\>)
+    \<{IS_THERE}(\s{x_at_end}|\>)
 if
     true
