@@ -6,8 +6,6 @@ implemented in Python 3, and is based on intents and entities detected during In
 
 Core of the small-talk logic is based on Eliza bot ideas.
 
-Online demo https://chatbot.bdp.zorallabs.com
-
 ## Why RL3?
 
 RL3 is like a regex on steroids. It provides both entity extraction and categorization features which makes it good fit for detecting intents in user input (i.e. categorize it) and
